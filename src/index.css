@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'Kalam', cursive;
+}
+
+.container-dish {
+  @apply w-[260px] h-[300px] flex flex-col items-center gap-1 rounded-xl relative;
+}
+.btn-cardapio {
+  @apply w-fit p-[1px] bg-white rounded-full cursor-pointer active:scale-x-[.96]
+}
