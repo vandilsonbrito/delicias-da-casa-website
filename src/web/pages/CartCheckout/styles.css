@@ -1,0 +1,11 @@
+table th, td{
+    @apply p-2      
+}
+
+tbody tr:nth-child(odd) {
+	background-color:#aaaaaa;
+}
+tbody tr:nth-child(even) {
+    background-color:#858585;
+}
+
