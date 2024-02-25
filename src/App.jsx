@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import Checkout from './pages/Checkout/Checkout';
+import Home from './web/pages/Home/Home';
+import CartCheckout from './web/pages/CartCheckout/CartCheckout';
+import StripeCardCheckout from './web/pages/StripeCardCheckout/StripeCardCheckout';
 
 function App() {
 
@@ -8,7 +9,8 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='Checkout' element={<Checkout/>}/>
+        <Route path='CartCheckout' element={<CartCheckout/>}/>
+        <Route path='CartCheckout/Checkout' element={<StripeCardCheckout/>}/>
       </Routes>
    </>
   )
