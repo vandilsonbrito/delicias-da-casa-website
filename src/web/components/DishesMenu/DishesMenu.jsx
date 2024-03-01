@@ -1,6 +1,4 @@
 import marmitexImg from '../../assets/images/marmitex.webp';
-import DeliveryBTN from '../DeliveryBTN/DeliveryBTN';
-import { MdOutlineWatchLater, MdDeliveryDining  } from "react-icons/md";
 import { MdAddCircle } from "react-icons/md";
 import { RiCloseCircleFill } from "react-icons/ri";
 import { useGlobal } from '../GlobalProvider/GlobalProvider';
@@ -24,37 +22,23 @@ export default function DishesMenu() {
             </div>
             <div className="absolute">
                     <div className="relative right-[105px]">
-                        <div className="w-[40px] h-[40px] p-[1px] bg-green-600 rounded-full text-2xl text-white flex justify-center items-center pt-1">{numberOfMarmitex}</div>
+                        <div className="menu-quantity">{numberOfMarmitex}</div>
                     </div>
                     <div className="relative -top-[40px] -right-[115px] flex flex-col">
                         <button 
                         className="btn-cardapio" 
                         onClick={() => {setNumberOfMarmitex(numberOfMarmitex + 1)}}>
-                            <MdAddCircle className='text-[1.7rem] text-green-500'/>
+                            <MdAddCircle className='text-[1.7rem]'/>
                         </button>
                         <button 
                         className="btn-cardapio mt-1"
                         onClick={() => setNumberOfMarmitex(numberOfMarmitex === 0 ? 0 : (numberOfMarmitex - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-green-800'/>
+                            <RiCloseCircleFill  className='text-[1.7rem]'/>
                         </button>
                     </div>
                 </div>
         </div>
 
-        <DeliveryBTN/>
-        <div className="w-full my-3 px-10 text-center">
-            <div className="w-full h-full text-4xl flex items-center justify-evenly gap-5">
-                <div className="w-fit h-full flex flex-col justify-center items-center gap-3">
-                    <MdOutlineWatchLater />
-                    <p className="text-sm lg:text-xl">Aberto das 06:00 hs - 21:00 hs</p>
-                </div>
-                <div className="w-fit h-full flex flex-col justify-center items-center gap-3">
-                    <MdDeliveryDining />
-                    <p className="text-sm lg:text-xl">Delivery a partir das 11:00 hs</p>
-                </div>
-            </div>
-            
-        </div>
     </div>
   )
 }
