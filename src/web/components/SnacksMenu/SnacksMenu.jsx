@@ -13,6 +13,7 @@ import sanduicheSalameImg from '../../assets/images/sanduiche-salame.webp';
 import { MdAddCircle } from "react-icons/md";
 import { RiCloseCircleFill } from "react-icons/ri";
 import { useGlobal } from '../GlobalProvider/GlobalProvider';
+import { MdOutlineWatchLater, MdDeliveryDining  } from "react-icons/md";
 
 
 export default function Menu() {
@@ -20,7 +21,21 @@ export default function Menu() {
     const { numberOfMistoQuente, setNumberOfMistoQuente, numberOfXTudo, setNumberOfXTudo, numberOfSandMortadela, setNumberOfSandMortadela, numberOfXSalada, setNumberOfXSalada, numberOfBauru, setNumberOfBauru, numberOfSandPernil, setNumberOfSandPernil, numberOfAmericano, setNumberOfAmericano, numberOfFrangoQueijo, setNumberOfFrangoQueijo, numberOfXBacon, setNumberOfXBacon, numberOfXCatupiry, setNumberOfXCatupiry, numberOfSandAtum, setNumberOfSandAtum, numberOfSandSalame, setNumberOfSandSalame } = useGlobal();
 
   return (
-    <div className="w-full h-full pt-16 lg:px-28 bg-white border-t-[1px] border-slate-200">
+    <div className="w-full h-full pt-5 lg:px-28 bg-white border-t-[1px] border-slate-200">
+
+        <div className="w-full h-40 mt-3 mb-16 px-10 pb-10 text-center border-b-[1px] border-black">
+            <div className="w-full h-full text-4xl flex items-center justify-evenly gap-5">
+                <div className="w-fit h-full flex flex-col justify-center items-center gap-3">
+                    <MdOutlineWatchLater />
+                    <p className="text-xs lg:text-lg">Aberto das 06:00 hs - 21:00 hs</p>
+                </div>
+                <div className="w-full lg:w-[45%] h-full flex flex-col justify-center items-center gap-3 mt-3 lg:mt-6">
+                    <MdDeliveryDining />
+                    <p className="text-xs lg:text-lg">Delivery acima de R$ 10,00 e a partir das 11:00 hs. Taxa de entrega: R$3,00.</p>
+                </div>
+            </div>
+        </div>
+
         <h2 className="text-[2.5rem] text-center uppercase">Cardápio</h2>
         <h3 className="text-[2rem] text-left mt-16 mb-10 ml-12">Lanches</h3>
 
@@ -34,18 +49,18 @@ export default function Menu() {
                 </div>
                 <div className="absolute">
                     <div className="relative right-[105px]">
-                        <div className="w-[40px] h-[40px] p-[1px] bg-green-600 rounded-full text-2xl text-white flex justify-center items-center pt-1">{numberOfMistoQuente}</div>
+                        <div className="menu-quantity">{numberOfMistoQuente}</div>
                     </div>
                     <div className="relative -top-[40px] -right-[115px] flex flex-col">
                         <button 
                         className="btn-cardapio" 
                         onClick={() => {setNumberOfMistoQuente(numberOfMistoQuente + 1)}}>
-                            <MdAddCircle className='text-[1.7rem] text-green-500'/>
+                            <MdAddCircle className='text-[1.7rem]'/>
                         </button>
                         <button 
                         className="btn-cardapio mt-1"
                         onClick={() => setNumberOfMistoQuente(numberOfMistoQuente === 0 ? 0 : (numberOfMistoQuente - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-green-800'/>
+                            <RiCloseCircleFill  className='text-[1.7rem] text-slate-400'/>
                         </button>
                     </div>
                 </div>
@@ -58,18 +73,18 @@ export default function Menu() {
                 </div>
                 <div className="absolute">
                     <div className="relative right-[105px]">
-                        <div className="w-[40px] h-[40px] p-[1px] bg-green-600 rounded-full text-2xl text-white flex justify-center items-center pt-1">{numberOfXTudo}</div>
+                        <div className="menu-quantity">{numberOfXTudo}</div>
                     </div>
                     <div className="relative -top-[40px] -right-[115px] flex flex-col">
                         <button 
                         className="btn-cardapio"
                         onClick={() => {setNumberOfXTudo(numberOfXTudo + 1)}}>
-                            <MdAddCircle className='text-[1.7rem] text-green-500'/>
+                            <MdAddCircle className='text-[1.7rem]'/>
                         </button>
                         <button 
                         className="btn-cardapio mt-1"
                         onClick={() => setNumberOfXTudo(numberOfXTudo === 0 ? 0 : (numberOfXTudo - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-green-800'/>
+                            <RiCloseCircleFill  className='text-[1.7rem] text-slate-400'/>
                         </button>
                     </div>
                 </div>
@@ -83,18 +98,18 @@ export default function Menu() {
                 </div>
                 <div className="absolute">
                     <div className="relative right-[105px]">
-                        <div className="w-[40px] h-[40px] p-[1px] bg-green-600 rounded-full text-2xl text-white flex justify-center items-center pt-1">{numberOfSandMortadela}</div>
+                        <div className="menu-quantity">{numberOfSandMortadela}</div>
                     </div>
                     <div className="relative -top-[40px] -right-[115px] flex flex-col ">
                         <button 
                         className="btn-cardapio"
                         onClick={() => {setNumberOfSandMortadela(numberOfSandMortadela + 1)}}>
-                            <MdAddCircle className='text-[1.7rem] text-green-500'/>
+                            <MdAddCircle className='text-[1.7rem]'/>
                         </button>
                         <button 
                         className="btn-cardapio mt-1"
                         onClick={() => setNumberOfSandMortadela(numberOfSandMortadela === 0 ? 0 : (numberOfSandMortadela - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-green-800'/>
+                            <RiCloseCircleFill  className='text-[1.7rem] text-slate-400'/>
                         </button>
                     </div>
                 </div>
@@ -108,18 +123,18 @@ export default function Menu() {
                 </div>
                 <div className="absolute">
                     <div className="relative right-[105px]">
-                        <div className="w-[40px] h-[40px] p-[1px] bg-green-600 rounded-full text-2xl text-white flex justify-center items-center pt-1">{numberOfXSalada}</div>
+                        <div className="menu-quantity">{numberOfXSalada}</div>
                     </div>
                     <div className="relative -top-[40px] -right-[115px] flex flex-col">
                         <button 
                         className="btn-cardapio"
                         onClick={() => {setNumberOfXSalada(numberOfXSalada + 1)}}>
-                            <MdAddCircle className='text-[1.7rem] text-green-500'/>
+                            <MdAddCircle className='text-[1.7rem]'/>
                         </button>
                         <button 
                         className="btn-cardapio mt-1"
                         onClick={() => setNumberOfXSalada(numberOfXSalada === 0 ? 0 : (numberOfXSalada - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-green-800'/>
+                            <RiCloseCircleFill  className='text-[1.7rem] text-slate-400'/>
                         </button>
                     </div>
                 </div>
@@ -133,18 +148,18 @@ export default function Menu() {
                 </div>
                 <div className="absolute">
                     <div className="relative right-[105px]">
-                        <div className="w-[40px] h-[40px] p-[1px] bg-green-600 rounded-full text-2xl text-white flex justify-center items-center pt-1">{numberOfBauru}</div>
+                        <div className="menu-quantity">{numberOfBauru}</div>
                     </div>
                     <div className="relative -top-[40px] -right-[115px] flex flex-col">
                         <button 
                         className="btn-cardapio"
                         onClick={() => {setNumberOfBauru(numberOfBauru + 1)}}>
-                            <MdAddCircle className='text-[1.7rem] text-green-500'/>
+                            <MdAddCircle className='text-[1.7rem]'/>
                         </button>
                         <button 
                         className="btn-cardapio mt-1"
                         onClick={() => setNumberOfBauru(numberOfBauru === 0 ? 0 : (numberOfBauru - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-green-800'/>
+                            <RiCloseCircleFill  className='text-[1.7rem] text-slate-400'/>
                         </button>
                     </div>
                 </div>
@@ -158,18 +173,18 @@ export default function Menu() {
                 </div>
                 <div className="absolute">
                     <div className="relative right-[105px]">
-                        <div className="w-[40px] h-[40px] p-[1px] bg-green-600 rounded-full text-2xl text-white flex justify-center items-center pt-1">{numberOfSandPernil}</div>
+                        <div className="menu-quantity">{numberOfSandPernil}</div>
                     </div>
                     <div className="relative -top-[40px] -right-[115px] flex flex-col">
                         <button 
                         className="btn-cardapio"
                         onClick={() => {setNumberOfSandPernil(numberOfSandPernil + 1)}}>
-                            <MdAddCircle className='text-[1.7rem] text-green-500'/>
+                            <MdAddCircle className='text-[1.7rem]'/>
                         </button>
                         <button 
                         className="btn-cardapio mt-1"
                         onClick={() => setNumberOfSandPernil(numberOfSandPernil === 0 ? 0 : (numberOfSandPernil - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-green-800'/>
+                            <RiCloseCircleFill  className='text-[1.7rem] text-slate-400'/>
                         </button>
                     </div>
                 </div>
@@ -183,18 +198,18 @@ export default function Menu() {
                 </div>
                 <div className="absolute">
                     <div className="relative right-[105px]">
-                        <div className="w-[40px] h-[40px] p-[1px] bg-green-600 rounded-full text-2xl text-white flex justify-center items-center pt-1">{numberOfAmericano}</div>
+                        <div className="menu-quantity">{numberOfAmericano}</div>
                     </div>
                     <div className="relative -top-[40px] -right-[115px] flex flex-col">
                         <button 
                         className="btn-cardapio"
                         onClick={() => {setNumberOfAmericano(numberOfAmericano + 1)}}>
-                            <MdAddCircle className='text-[1.7rem] text-green-500'/>
+                            <MdAddCircle className='text-[1.7rem]'/>
                         </button>
                         <button 
                         className="btn-cardapio mt-1"
                         onClick={() => setNumberOfAmericano(numberOfAmericano === 0 ? 0 : (numberOfAmericano - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-green-800'/>
+                            <RiCloseCircleFill  className='text-[1.7rem] text-slate-400'/>
                         </button>
                     </div>
                 </div>
@@ -208,18 +223,18 @@ export default function Menu() {
                 </div>
                 <div className="absolute">
                     <div className="relative right-[105px]">
-                        <div className="w-[40px] h-[40px] p-[1px] bg-green-600 rounded-full text-2xl text-white flex justify-center items-center pt-1">{numberOfFrangoQueijo}</div>
+                        <div className="menu-quantity">{numberOfFrangoQueijo}</div>
                     </div>
                     <div className="relative -top-[40px] -right-[115px] flex flex-col">
                         <button 
                         className="btn-cardapio"
                         onClick={() => {setNumberOfFrangoQueijo(numberOfFrangoQueijo + 1)}}>
-                            <MdAddCircle className='text-[1.7rem] text-green-500'/>
+                            <MdAddCircle className='text-[1.7rem]'/>
                         </button>
                         <button 
                         className="btn-cardapio mt-1"
                         onClick={() => setNumberOfFrangoQueijo(numberOfFrangoQueijo === 0 ? 0 : (numberOfFrangoQueijo - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-green-800'/>
+                            <RiCloseCircleFill  className='text-[1.7rem] text-slate-400'/>
                         </button>
                     </div>
                 </div>
@@ -233,18 +248,18 @@ export default function Menu() {
                 </div>
                 <div className="absolute">
                     <div className="relative right-[105px]">
-                        <div className="w-[40px] h-[40px] p-[1px] bg-green-600 rounded-full text-2xl text-white flex justify-center items-center pt-1">{numberOfXBacon}</div>
+                        <div className="menu-quantity">{numberOfXBacon}</div>
                     </div>
                     <div className="relative -top-[40px] -right-[115px] flex flex-col">
                         <button 
                         className="btn-cardapio"
                         onClick={() => {setNumberOfXBacon(numberOfXBacon + 1)}}>
-                            <MdAddCircle className='text-[1.7rem] text-green-500'/>
+                            <MdAddCircle className='text-[1.7rem]'/>
                         </button>
                         <button 
                         className="btn-cardapio mt-1"
                         onClick={() => setNumberOfXBacon(numberOfXBacon === 0 ? 0 : (numberOfXBacon - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-green-800'/>
+                            <RiCloseCircleFill  className='text-[1.7rem] text-slate-400'/>
                         </button>
                     </div>
                 </div>
@@ -258,18 +273,18 @@ export default function Menu() {
                 </div>
                 <div className="absolute">
                     <div className="relative right-[105px]">
-                        <div className="w-[40px] h-[40px] p-[1px] bg-green-600 rounded-full text-2xl text-white flex justify-center items-center pt-1">{numberOfXCatupiry}</div>
+                        <div className="menu-quantity">{numberOfXCatupiry}</div>
                     </div>
                     <div className="relative -top-[40px] -right-[115px] flex flex-col">
                         <button 
                         className="btn-cardapio"
                         onClick={() => {setNumberOfXCatupiry(numberOfXCatupiry + 1)}}>
-                            <MdAddCircle className='text-[1.7rem] text-green-500'/>
+                            <MdAddCircle className='text-[1.7rem]'/>
                         </button>
                         <button 
                         className="btn-cardapio mt-1"
                         onClick={() => setNumberOfXCatupiry(numberOfXCatupiry === 0 ? 0 : (numberOfXCatupiry - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-green-800'/>
+                            <RiCloseCircleFill  className='text-[1.7rem] text-slate-400'/>
                         </button>
                     </div>
                 </div>
@@ -283,18 +298,18 @@ export default function Menu() {
                 </div>
                 <div className="absolute">
                     <div className="relative right-[105px]">
-                        <div className="w-[40px] h-[40px] p-[1px] bg-green-600 rounded-full text-2xl text-white flex justify-center items-center pt-1">{numberOfSandAtum}</div>
+                        <div className="menu-quantity">{numberOfSandAtum}</div>
                     </div>
                     <div className="relative -top-[40px] -right-[115px] flex flex-col">
                         <button 
                         className="btn-cardapio"
                         onClick={() => {setNumberOfSandAtum(numberOfSandAtum + 1)}}>
-                            <MdAddCircle className='text-[1.7rem] text-green-500'/>
+                            <MdAddCircle className='text-[1.7rem]'/>
                         </button>
                         <button 
                         className="btn-cardapio mt-1"
                         onClick={() => setNumberOfSandAtum(numberOfSandAtum === 0 ? 0 : (numberOfSandAtum - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-green-800'/>
+                            <RiCloseCircleFill  className='text-[1.7rem] text-slate-400'/>
                         </button>
                     </div>
                 </div>
@@ -308,18 +323,18 @@ export default function Menu() {
                 </div>
                 <div className="absolute">
                     <div className="relative right-[105px]">
-                        <div className="w-[40px] h-[40px] p-[1px] bg-green-600 rounded-full text-2xl text-white flex justify-center items-center pt-1">{numberOfSandSalame}</div>
+                        <div className="menu-quantity">{numberOfSandSalame}</div>
                     </div>
                     <div className="relative -top-[40px] -right-[115px] flex flex-col">
                         <button 
                         className="btn-cardapio"
                         onClick={() => {setNumberOfSandSalame(numberOfSandSalame + 1)}}>
-                            <MdAddCircle className='text-[1.7rem] text-green-500'/>
+                            <MdAddCircle className='text-[1.7rem]'/>
                         </button>
                         <button 
                         className="btn-cardapio mt-1"
                         onClick={() => setNumberOfSandSalame(numberOfSandSalame === 0 ? 0 : (numberOfSandSalame - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-green-800'/>
+                            <RiCloseCircleFill  className='text-[1.7rem] text-slate-400'/>
                         </button>
                     </div>
                 </div>
