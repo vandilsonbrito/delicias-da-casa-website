@@ -1,5 +1,5 @@
-import HambImg from '../../assets/images/hamburger-banner1.jpeg';
-import HamImgMobile from '../../assets/images/hamburger-banner1.webp';
+import HambImg from '../../assets/images/hamburger-banner.jpeg';
+import HamImgMobile from '../../assets/images/hamburger-banner.webp';
 
 export default function Banner() {
   return (
