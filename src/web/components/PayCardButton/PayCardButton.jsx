@@ -1,14 +1,16 @@
 import axios from 'axios';
 import { FaCreditCard } from "react-icons/fa6";
 
+const BASE_URL = 'https://backend-server-stripe.vercel.app';/* https://backend-server-stripe.vercel.app */
 // eslint-disable-next-line react/prop-types
 const PayButton = ({ cartItems }) => {
     
     const handleCheckout = () => {
         console.log(cartItems)
         axios
-        .post('http://localhost:3001/CartCheckout/stripe/create-checkout-session', {
+        .post(`${BASE_URL}/CartCheckout/stripe/create-checkout-session`, {
             cartItems,
+            
         })
         .then((res) => {
             if (res.data.url) {
