@@ -7,12 +7,12 @@
 }
 
 .container-dish {
-  @apply w-[260px] h-[300px] flex flex-col items-center gap-1 rounded-xl relative;
+  @apply w-[260px] h-[350px] flex flex-col items-center gap-1 rounded-xl relative shadow-xl pt-10;
 }
 .btn-cardapio {
-  @apply w-fit p-[1px] bg-white rounded-full cursor-pointer active:scale-x-[.96] text-gray-500
+  @apply w-fit p-[1px] bg-white rounded-full cursor-pointer active:scale-x-[.96] text-blue-900
 }
 
 .menu-quantity {
-  @apply w-[40px] h-[40px] p-[1px] bg-gray-500 rounded-full text-2xl text-white flex justify-center items-center pt-1;
+  @apply w-[25px] h-[25px] p-[1px] bg-blue-900 rounded-full text-sm font-bold text-white flex justify-center items-center pt-1;
 }
