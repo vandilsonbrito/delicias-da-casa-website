@@ -49,8 +49,9 @@ function CartCheckout() {
     
     const settingCartQuantityFromLocalStorage = () => {
         checkoutBill.forEach(item => {
+            console.log(item)
             const menuItem = menu.find(menu => menu.id === item.id);
-            if (menuItem) {
+            if(menuItem && menuItem.quantity > 0) {
                 item.quantity = menuItem.quantity;
             }
         });
@@ -81,7 +82,6 @@ function CartCheckout() {
         const filteredMenu = menu.filter((item) => item.quantity > 0);
         console.log(filteredMenu);
         console.log(checkoutBill);
-        /* checkoutBill = filteredMenu */
         filteredMenu.length !== 0 ? checkoutBill = filteredMenu : null
 
         return checkoutBill;
@@ -114,7 +114,8 @@ function CartCheckout() {
         settingQuantity()
     }, [])
 
-
+    console.log(menu)
+    console.log(checkoutBill)
     // INTEGRATION WITH LOCAL  STORAGE
     const saveCartInLocalStorage = () => {  
         return localStorage.setItem("cart", JSON.stringify(checkoutBill))
