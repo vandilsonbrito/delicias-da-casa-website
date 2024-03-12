@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: 'Kalam', cursive;
+body {
+  font-family: "Ubuntu", sans-serif;
 }
+
 
 .container-dish {
   @apply w-[260px] h-[350px] flex flex-col items-center gap-1 rounded-xl relative shadow-xl pt-10;
@@ -14,5 +15,5 @@
 }
 
 .menu-quantity {
-  @apply w-[25px] h-[25px] p-[1px] bg-blue-900 rounded-full text-sm font-bold text-white flex justify-center items-center pt-1;
+  @apply w-[25px] h-[25px] p-[1px] bg-blue-900 rounded-full text-sm font-bold text-white flex justify-center items-center ;
 }
