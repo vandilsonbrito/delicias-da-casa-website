@@ -22,7 +22,7 @@ export default function Header({ className, isOrderButtonActive }) {
                     <button>Contato</button>
                 </Link>
             </nav>
-            <Link to='CartCheckout' className={`${isOrderButtonActive ? 'visible' : 'hidden'}`}>
+            <Link to='cart-checkout' className={`${isOrderButtonActive ? 'visible' : 'hidden'}`}>
                 <button className='bg-green-600 px-4 py-2 md:px-5 md:py-3 rounded-2xl font-bold text-base active:scale-[.98] tracking-wider'>Fazer Pedido</button>
             </Link>
         </header>

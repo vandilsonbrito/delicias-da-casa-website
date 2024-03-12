@@ -9,7 +9,7 @@ const PayButton = ({ cartItems }) => {
     const handleCheckout = () => {
         console.log(cartItems)
         axios
-        .post(`${BASE_URL}/CartCheckout/stripe/create-checkout-session`, {
+        .post(`${BASE_URL}/cart-checkout/stripe/create-checkout-session`, {
             cartItems,
             
         })
