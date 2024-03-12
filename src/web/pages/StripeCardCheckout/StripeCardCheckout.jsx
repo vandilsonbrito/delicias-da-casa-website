@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import './StripeCardCheckout.css'; // Importe o arquivo de estilos para aplicar os estilos do Stripe
 
-const BASE_URL = 'https://backend-server-stripe.vercel.app'; /* 'https://backend-server-stripe.vercel.app'; */
-  
+
 export default function StripeCardCheckout() {
+  const BASE_URL = 'https://rich-shift.cyclic.app';/* 'https://rich-shift.cyclic.app';  *//* 'http://localhost:3000'; */
   const stripe = useStripe();
   const elements = useElements();
   const [, setError] = useState(null);
@@ -22,7 +22,7 @@ export default function StripeCardCheckout() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ amount: 1000, currency: 'usd' }),
+        body: JSON.stringify({ amount: 1000, currency: 'brl' }),
       });
 
       const data = await response.json();
@@ -30,7 +30,7 @@ export default function StripeCardCheckout() {
         payment_method: {
           card: elements.getElement(CardElement),
           billing_details: {
-            
+            // Include any additional billing details
           },
         },
       });
