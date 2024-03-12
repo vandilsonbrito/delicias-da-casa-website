@@ -19,7 +19,7 @@ export default function Footer() {
             </div>
             <div className="w-fit h-full flex flex-col items-center">
                 <h4 className="text-center mt-16 mb-3 lg:mb-10 ">Contato</h4>
-                <p className='text-sm lg:text-lg'>(11)987492514</p>
+                <p className='text-sm lg:text-lg'>(11)911111111</p>
             </div>
         </div>
         <div className="mt-14">Criado por <a className='text-blue-400 underline' href="https://vandilson-portfolio.netlify.app/">Vandilson Brito</a></div>
