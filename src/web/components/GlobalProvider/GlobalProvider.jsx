@@ -17,12 +17,11 @@ export function GlobalProvider({ children }) {
     const [numberOfSandAtum, setNumberOfSandAtum] = useState(0);
     const [numberOfSandSalame, setNumberOfSandSalame] = useState(0);
     const [numberOfMarmitex, setNumberOfMarmitex] = useState(0);
-    const [isAdded, setIsAdded ] = useState(false);
-    const [isCartOpen, setIsCartOpen ] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isOrderButtonActive, setisOrderButtonActive ] = useState(false);
+
 
     return (
-        <GlobalContext.Provider value={{ numberOfMistoQuente, setNumberOfMistoQuente, numberOfXTudo, setNumberOfXTudo, numberOfSandMortadela, setNumberOfSandMortadela, numberOfXSalada, setNumberOfXSalada, numberOfBauru, setNumberOfBauru, numberOfSandPernil, setNumberOfSandPernil, numberOfAmericano, setNumberOfAmericano, numberOfFrangoQueijo, setNumberOfFrangoQueijo, numberOfXBacon, setNumberOfXBacon, numberOfXCatupiry, setNumberOfXCatupiry, numberOfSandAtum, setNumberOfSandAtum, numberOfSandSalame, setNumberOfSandSalame, numberOfMarmitex, setNumberOfMarmitex, isAdded, setIsAdded, isCartOpen, setIsCartOpen, isMenuOpen, setIsMenuOpen}}>
+        <GlobalContext.Provider value={{ numberOfMistoQuente, setNumberOfMistoQuente, numberOfXTudo, setNumberOfXTudo, numberOfSandMortadela, setNumberOfSandMortadela, numberOfXSalada, setNumberOfXSalada, numberOfBauru, setNumberOfBauru, numberOfSandPernil, setNumberOfSandPernil, numberOfAmericano, setNumberOfAmericano, numberOfFrangoQueijo, setNumberOfFrangoQueijo, numberOfXBacon, setNumberOfXBacon, numberOfXCatupiry, setNumberOfXCatupiry, numberOfSandAtum, setNumberOfSandAtum, numberOfSandSalame, setNumberOfSandSalame, numberOfMarmitex, setNumberOfMarmitex, isOrderButtonActive, setisOrderButtonActive }}>
             {children}
         </GlobalContext.Provider>
     );
