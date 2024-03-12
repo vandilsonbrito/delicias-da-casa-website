@@ -1,26 +1,27 @@
 import express from 'express';
-import { json } from 'express';
 import cors from 'cors';
 
 import router from './stripe.js';
 const stripe = router;
 
 const app = express();
-app.use(cors());
-const port = 3001; 
+const port =  3000; 
 
-// Middleware to parse JSON and set up
-app.use(express.json()); 
+
 app.use(express.urlencoded({ extended: true })); 
+app.use(cors());
 
-app.use("/CartCheckout/stripe", stripe)
-app.use(json());
-
+// Route obly to inform server is running
 app.get('/', (req, res) => {
-  res.send('Servidor do backend está funcionando!');
+  res.send('Server is running!');
 });
 
-app.post('/create-checkout-session', async (req, res) => {
+// Route to inform server that any request from '/CartCheckout/stripe' route will be processed by the middleware in /stripe.js
+app.use("/cart-checkout/stripe", stripe);
+
+
+// Route to create a checkout session
+app.post('/create-checkout-session', express.json(), async (req, res) => {
   const { amount, currency } = req.body;
 
   try {
@@ -31,12 +32,16 @@ app.post('/create-checkout-session', async (req, res) => {
 
     res.status(200).json({ clientSecret: paymentIntent.client_secret });
   } catch (error) {
-    console.error('Erro ao criar o pagamento:', error);
-    res.status(500).send({ error: 'Erro ao criar o pagamento' });
+    console.error('Error creating Payment Intent: ', error);
+    res.status(500).send({ error: 'Error creating Payment' });
   }
 });
 
+// Route to pass webhook data to frontend
+app.post('/checkout-success', express.json(), stripe);
+
+
 app.listen(port, () => {
-  console.log(`Servidor do backend está rodando em http://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
 
