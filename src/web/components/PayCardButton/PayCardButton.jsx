@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { FaCreditCard } from "react-icons/fa6";
 
-const BASE_URL = 'https://backend-server-stripe.vercel.app';/* https://backend-server-stripe.vercel.app */
 // eslint-disable-next-line react/prop-types
 const PayButton = ({ cartItems }) => {
+
+    const BASE_URL = 'https://rich-shift.cyclic.app'; /* 'https://rich-shift.cyclic.app'; *//*  http://localhost:3000 */
     
     const handleCheckout = () => {
         console.log(cartItems)
