@@ -5,6 +5,7 @@ import { useGlobal } from '../../components/GlobalProvider/GlobalProvider';
 import './styles.css'
 import PayButton from "../../components/PayCardButton/PayCardButton";
 import Header from "../../components/Header/Header";
+import products from '../../products.json';
 import { useEffect } from "react";
 
 
@@ -14,26 +15,11 @@ function CartCheckout() {
 
     const cart = [numberOfMistoQuente, numberOfXTudo, numberOfSandMortadela, numberOfXSalada, numberOfBauru, numberOfSandPernil, numberOfAmericano, numberOfFrangoQueijo, numberOfXBacon, numberOfXCatupiry, numberOfSandAtum, numberOfSandSalame, numberOfMarmitex];
 
-    const products = [ 
-        { id: 1, productName: 'Misto Quente', price: 5.99, quantity: numberOfMistoQuente, image: "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/misto-quente_pjamnc.jpg"} , 
-        { id: 2, productName: 'X-Tudo', price: 23.99, quantity: numberOfXTudo, image: "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/x-tudo_ys6tjp.png"},  
-        { id: 3, productName: 'Sanduíche de Mortadela', price: 17.99, quantity: numberOfSandMortadela, image: "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/sanduiche-de-mortadela_mt5sy4.webp"}, 
-        { id: 4, productName: 'X-Salada', price: 17.99, quantity: numberOfXSalada, image: "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/x-salada_qp8fkb.jpg"},  
-        { id: 5, productName: 'Bauru', price: 22.50, quantity: numberOfBauru, image: "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982956/Del%C3%ADcias-da-casa/bauru_nm2ce7.jpg"}, 
-        { id: 6, productName: 'Sanduíche de Pernil', price: 21.99, quantity: numberOfSandPernil, image: "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982956/Del%C3%ADcias-da-casa/sanduiche-de-pernil_a8acll.png"}, 
-        { id: 7, productName: 'Americano', price: 20.99, quantity: numberOfAmericano, image: "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/americano_bt0p52.jpg"}, 
-        { id: 8, productName: 'Frango c/ Qeijo', price: 18.99, quantity: numberOfFrangoQueijo, image: "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982956/Del%C3%ADcias-da-casa/sanduiche-frango_lo9p9k.jpg"}, 
-        { id: 9, productName: 'X Bacon', price: 19.99, quantity: numberOfXBacon, image: "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982956/Del%C3%ADcias-da-casa/x-bacon_bpkbbw.jpg"}, 
-        { id: 10, productName: 'X Catupiry', price: 20.99, quantity: numberOfXCatupiry, image: "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982954/Del%C3%ADcias-da-casa/x-catupiry_uytuqc.jpg"}, 
-        { id: 11, productName: 'Sanduíche de Atum', price: 24.99, quantity: numberOfSandAtum, image: "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/sanduiche-atum_gn0a7g.jpg"}, 
-        { id: 12, productName: 'Sanduíche de Salame', price: 20.00, quantity: numberOfSandSalame, image: "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982956/Del%C3%ADcias-da-casa/sanduiche-salame_lffey6.webp"}, 
-        { id: 13, productName: 'Marmitex', price: 15.00, quantity: numberOfMarmitex, image: "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/marmitex_trwhcv.webp"} 
-    ]
- 
+    products.forEach((item, index) => {
+        item.quantity = cart[index];
+    })
     let showProductCheckout = [];
-    let total = 0;
-
-    // PEGO AS QUANTIDADES DE ITEM QUE É MAIOR QUE 0 E ADICIONO NO CHECKOUTBILL. 
+    let total = 0; 
 
     // START TO CALCULATE THE AMOUNT --------------------------------------------------------------------------
     let billIndex = cart.map((item, index) => { if(item > 0) return index });
@@ -80,8 +66,6 @@ function CartCheckout() {
 
     const removeItemCart = () => {  
         const filteredproducts = products.filter((item) => item.quantity > 0);
-        console.log(filteredproducts);
-        console.log(checkoutBill);
         filteredproducts.length !== 0 ? checkoutBill = filteredproducts : null
 
         return checkoutBill;
@@ -120,12 +104,10 @@ function CartCheckout() {
     const saveCartInLocalStorage = () => {  
         return localStorage.setItem("cart", JSON.stringify(checkoutBill))
     }
-    console.log(checkoutBill)
     saveCartInLocalStorage(checkoutBill)
 
 
     const createProductCheckout = () => {
-        console.log(checkoutBill)
         checkoutBill.map((item, index) => {
             item.quantity === 0 ? null :
             showProductCheckout.push(
