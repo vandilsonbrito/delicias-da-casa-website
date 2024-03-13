@@ -8,7 +8,8 @@ body {
 
 
 .container-dish {
-  @apply w-[260px] h-[350px] flex flex-col items-center gap-1 rounded-xl relative shadow-xl pt-10;
+  @apply w-[260px] h-[350px] flex flex-col items-center gap-1 rounded-xl relative shadow-xl pt-10 px-3
+  ;
 }
 .btn-cardapio {
   @apply w-fit p-[1px] bg-white rounded-full cursor-pointer active:scale-x-[.96] text-blue-900
