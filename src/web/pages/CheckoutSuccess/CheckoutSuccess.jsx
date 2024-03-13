@@ -3,9 +3,12 @@ import Header from "../../components/Header/Header";
 import { FaCheckCircle } from "react-icons/fa";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import products from '../../products.json';
 
 
 export default function CheckoutSuccess() {
+
+  console.log(products)
   
   const [data, setData] = useState([]);
 
@@ -24,8 +27,9 @@ export default function CheckoutSuccess() {
       fecthData()
 
   }, [])
+  console.log(data)
 
-
+// Connect with Whatsapp
 /*   useEffect(() => {
   
       const completedMessage = `*Pronto, já recebemos seu pedido! Agora é só aguardar que estamos preparando e logo chegará até você.*\n\n Pedido: \n ${createOrderDescription(data)} \n\n *Subtotal*: R$${(data?.amount_subtotal / 100).toFixed(2)} \n *Entrega*: R$${(data?.total_details?.amount_shipping / 100).toFixed(2)} \n *Total*: R$${(data?.amount_total / 100).toFixed(2)} \n\n Nome: ${data?.customer_details?.name} \n Telefone: ${data?.customer_details?.phone} \n\n *Endereço de Entrega*:\n ${data?.customer_details?.address?.line1}, ${data?.customer_details?.address?.line2}, ${data?.customer_details?.address?.city}-${data?.customer_details?.address?.state}. \n\n Entrega estimada em 1 hora. \n\n *Delícias da Casa agradece a preferência!*`;
@@ -66,7 +70,7 @@ export default function CheckoutSuccess() {
   const createOrderDescription = (data) => {
       const cart = data?.cart ?? [];
       return cart.map((item, index) => (
-          <p key={index}>{item.quantity}x {item.productName}</p>
+          <p key={index}>{item.quantity}x {products[index].productName}</p>
       ))
   };
 
