@@ -92,7 +92,7 @@ export default function Menu() {
                 <button onClick={() => {setNumberOfXTudo(numberOfXTudo + 1)}}>
                     <img className='w-[220px] h-[170px] rounded-3xl select-none' src={xTudoImg} alt="" />
                 </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">X-Tudo- R$ 12,00</p>
+                <p className="font-bold text-xl text-center mt-2 tracking-wider">X-Tudo- R$ 23,99</p>
                 <div className="w-[90%] mt-2 flex items-center justify-center">
                     <p className="text-sm text-center">Pão, Hambúrguer, Ovo, Queijo, Bacon, Alface e Tomate</p>
                 </div>
@@ -114,7 +114,7 @@ export default function Menu() {
                 <button onClick={() => {setNumberOfSandMortadela(numberOfSandMortadela + 1)}}>
                     <img className='w-[220px] h-[170px] rounded-3xl select-none' src={sanduicheMortadelaImg} alt="" />
                 </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Sanduíche de Mortadela - R$ 8,00</p>
+                <p className="font-bold text-xl text-center mt-2 tracking-wider">Sanduíche de Mortadela - R$ 17,99</p>
                 <div className="w-[90%] mt-2 flex items-center justify-center">
                     <p className="text-sm text-center">Pão, Mortadela, Alface e Manteiga</p>
                 </div>
@@ -136,7 +136,7 @@ export default function Menu() {
                 <button onClick={() => {setNumberOfXSalada(numberOfXSalada + 1)}}>
                     <img className='w-[220px] h-[170px] rounded-3xl select-none' src={xSaladaImg} alt="" />
                 </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">X-Salada - R$ 8,00</p>
+                <p className="font-bold text-xl text-center mt-2 tracking-wider">X-Salada - R$ 17,99</p>
                 <div className="w-[90%] mt-2 flex items-center justify-center">
                     <p className="text-sm text-center">Pão, Hambúrguer, Queijo, Alface, Tomate</p>
                 </div>
@@ -158,7 +158,7 @@ export default function Menu() {
                 <button onClick={() => {setNumberOfBauru(numberOfBauru + 1)}}>
                     <img className='w-[220px] h-[170px] rounded-3xl select-none' src={BauruImg} alt="" />
                 </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Bauru - R$ 10,00</p>
+                <p className="font-bold text-xl text-center mt-2 tracking-wider">Bauru - R$ 22,50</p>
                 <div className="w-[90%] mt-2 flex items-center justify-center">
                     <p className="text-sm text-center">Pão, Rosbife, Queijo, Tomate, Picles</p>
                 </div>
@@ -180,7 +180,7 @@ export default function Menu() {
                 <button onClick={() => {setNumberOfSandPernil(numberOfSandPernil + 1)}}>
                     <img className='w-[220px] h-[170px] rounded-3xl select-none' src={sanduichePernilImg} alt="" />
                 </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Sanduíche de Pernil - R$ 10,00</p>
+                <p className="font-bold text-xl text-center mt-2 tracking-wider">Sanduíche de Pernil - R$ 21,99</p>
                 <div className="w-[90%] mt-2 flex items-center justify-center">
                     <p className="text-sm text-center">Pão, Pernil, Tomate</p>
                 </div>
@@ -202,7 +202,7 @@ export default function Menu() {
                 <button onClick={() => {setNumberOfAmericano(numberOfAmericano + 1)}}>
                     <img className='w-[220px] h-[170px] rounded-3xl select-none' src={americanoImg} alt="" />
                 </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Americano - R$ 15,00</p>
+                <p className="font-bold text-xl text-center mt-2 tracking-wider">Americano - R$ 20,99</p>
                 <div className="w-[90%] mt-2 flex items-center justify-center">
                     <p className="text-sm text-center"> Pão, Presunto, Mussarela, Ovo, Alface, Tomate e Maionese</p>
                 </div>
@@ -224,7 +224,7 @@ export default function Menu() {
                 <button onClick={() => {setNumberOfFrangoQueijo(numberOfFrangoQueijo + 1)}}>
                     <img className='w-[220px] h-[170px] rounded-3xl select-none' src={sanduicheFrangoImg} alt="" />
                 </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Frango c/ Qeijo - R$ 6,00</p>
+                <p className="font-bold text-xl text-center mt-2 tracking-wider">Frango c/ Qeijo - R$ 18,99</p>
                 <div className="w-[90%] mt-2 flex items-center justify-center">
                     <p className="text-sm text-center">Pão, Presunto e Queijo</p>
                 </div>
@@ -246,7 +246,7 @@ export default function Menu() {
                 <button onClick={() => {setNumberOfXBacon(numberOfXBacon + 1)}}>
                     <img className='w-[220px] h-[170px] rounded-3xl select-none' src={xBaconImg} alt="" />
                 </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">X Bacon- R$ 16,00</p>
+                <p className="font-bold text-xl text-center mt-2 tracking-wider">X Bacon- R$ 19,99</p>
                 <div className="w-[90%] mt-2 flex items-center justify-center">
                     <p className="text-sm text-center">Pão, Hambúrguer, Mussarela, Bacon e Maionese Caseira</p>
                 </div>
@@ -268,7 +268,7 @@ export default function Menu() {
                 <button onClick={() => {setNumberOfXCatupiry(numberOfXCatupiry + 1)}}>
                     <img className='w-[220px] h-[170px] rounded-3xl select-none' src={xCatupiryImg} alt="" />
                 </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">X Catupiry - R$ 17,00</p>
+                <p className="font-bold text-xl text-center mt-2 tracking-wider">X Catupiry - R$ 20,99</p>
                 <div className="w-[90%] mt-2 flex items-center justify-center">
                     <p className="text-sm text-center">Pão, Hambúrguer, Requeijão, Alface, Tomate e Maionese</p>
                 </div>
@@ -290,7 +290,7 @@ export default function Menu() {
                 <button onClick={() => {setNumberOfSandAtum(numberOfSandAtum + 1)}}>
                     <img className='w-[220px] h-[170px] rounded-3xl select-none' src={sanduicheAtumImg} alt="" />
                 </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Sanduíche de Atum - R$ 15,00</p>
+                <p className="font-bold text-xl text-center mt-2 tracking-wider">Sanduíche de Atum - R$ 24,99</p>
                 <div className="w-[90%] mt-2 flex items-center justify-center">
                     <p className="text-sm text-center">Pão, Atum Ralado, Ervilha, Maionese e Alface</p>
                 </div>
@@ -312,7 +312,7 @@ export default function Menu() {
                 <button onClick={() => {setNumberOfSandSalame(numberOfSandSalame + 1)}}>
                     <img className='w-[220px] h-[170px] rounded-3xl select-none' src={sanduicheSalameImg} alt="" />
                 </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Sanduíche de Salame - R$ 18,00</p>
+                <p className="font-bold text-xl text-center mt-2 tracking-wider">Sanduíche de Salame - R$ 20,00</p>
                 <div className="w-[90%] mt-2 flex items-center justify-center">
                     <p className="text-sm text-center">Pão, Salame, Mussarela, Alface e Maionese </p>
                 </div>
