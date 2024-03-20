@@ -11,6 +11,7 @@ export default function CheckoutSuccess() {
   console.log(products)
   
   const [data, setData] = useState([]);
+  
 
   useEffect(() => {
       const BASE_URL = 'https://lonely-red-wasp.cyclic.app'; /* 'https://lonely-red-wasp.cyclic.app'; *//*  http://localhost:3000 */
@@ -18,7 +19,6 @@ export default function CheckoutSuccess() {
           try {
             let response = await axios.get(`${BASE_URL}/checkout-success`);
             response = await response.data[0];
-            console.log('Response: ', response)
             setData(response);
           }
           catch(err) {
@@ -27,8 +27,11 @@ export default function CheckoutSuccess() {
       }
       fecthData()
 
+      // Remove itens from local storage when checkout completed
+      localStorage.setItem("cart", JSON.stringify([]))
+
   }, [])
-  console.log(data)
+  
 
 // Connect with Whatsapp
 /*   useEffect(() => {
