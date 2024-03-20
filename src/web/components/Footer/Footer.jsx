@@ -2,10 +2,12 @@ import logoImg from '../../assets/images/logo-delicias-da-casa.png';
 
 export default function Footer() {
   return (
-    <div className="w-full h-full bg-black text-white pt-10 pb-5 px-10 lg:px-28 flex flex-col items-center justify-center border-t-[1px] border-slate-200" >
-        <img className='h-24' src={logoImg} alt="Logo da Padaria do Baiano" />
+    <div className="w-full h-full bg-black text-white pt- pb-5 px-10 lg:px-28 flex flex-col items-center justify-center border-t-[1px] border-slate-200" id='/contact'>
 
         <div className="w-full h-full flex flex-col lg:flex-row justify-start items-center lg:items-start lg:justify-evenly  text-lg lg:text-[1.5rem]">
+            <div className='w-fit h-full mt-14'>
+                <img className='h-24' src={logoImg} alt="Logo da Padaria do Baiano" />
+            </div>
             <div className="w-fit h-full">
                 <h4 className="text-center mt-16 mb-3 lg:mb-10">Localização</h4>
                 <iframe 
