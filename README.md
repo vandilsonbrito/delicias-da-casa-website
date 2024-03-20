@@ -20,4 +20,4 @@ Pude aprender ainda mais sobre gerenciamento de estado, usando o useContext. Tiv
 
 <h2>Demo</h2>
 
-[[https://profjanilton.com.br/](https://delicias-da-casa.netlify.app/)](https://delicias-da-casa.netlify.app/)
+[[delicias-da-casa](https://delicias-da-casa.netlify.app/)]
