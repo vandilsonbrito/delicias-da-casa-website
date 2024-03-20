@@ -4,7 +4,7 @@ import './StripeCardCheckout.css'; // Importe o arquivo de estilos para aplicar 
 
 
 export default function StripeCardCheckout() {
-  const BASE_URL = 'https://rich-shift.cyclic.app';/* 'https://rich-shift.cyclic.app';  *//* 'http://localhost:3000'; */
+  const BASE_URL = 'https://lonely-red-wasp.cyclic.app';/* 'https://lonely-red-wasp.cyclic.app';  *//* 'http://localhost:3000'; */
   const stripe = useStripe();
   const elements = useElements();
   const [, setError] = useState(null);

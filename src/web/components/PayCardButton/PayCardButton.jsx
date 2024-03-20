@@ -4,7 +4,7 @@ import { FaCreditCard } from "react-icons/fa6";
 // eslint-disable-next-line react/prop-types
 const PayButton = ({ cartItems }) => {
 
-    const BASE_URL = 'https://rich-shift.cyclic.app'; /* 'https://rich-shift.cyclic.app'; *//*  http://localhost:3000 */
+    const BASE_URL = 'https://lonely-red-wasp.cyclic.app'; /* 'https://lonely-red-wasp.cyclic.app'; *//*  http://localhost:3000 */
     
     const handleCheckout = () => {
         console.log(cartItems)
