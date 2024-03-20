@@ -59,7 +59,7 @@ export default function Menu() {
                 </div>
                 <div className="w-full lg:w-[45%] h-full flex flex-col justify-center items-center gap-3 mt-3 lg:mt-6">
                     <MdDeliveryDining />
-                    <p className="text-xs lg:text-lg">Delivery acima de R$ 10,00 e a partir das 11:00 hs. Taxa de entrega: R$3,00.</p>
+                    <p className="text-xs lg:text-lg">Delivery acima de R$ 10,00 e a partir das 11:00 hs. Taxa de entrega: R$5,00.</p>
                 </div>
             </div>
         </div>
