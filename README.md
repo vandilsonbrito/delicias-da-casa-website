@@ -1,8 +1,23 @@
-# React + Vite
+# Delícias da Casa
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O website do restaurante e lanchonete Delícias da Casa é destinado ao delivery de pedidos. É possível escolher o(s) produto(s) e pagar com o cartão de débito/crédito através da integração com o Stripe, no qual, é requerido dados do cliente para efetuar a entrega. Ao mesmo tempo, também é possível integrar a aplicação com o Whatsapp e quando o pedido for faturado chegar uma mensagem no Whatsapp do cliente com os detalhes da compra.
 
-Currently, two official plugins are available:
+<h2>Technologies</h2>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- React-Router-Dom
+- Tailwind CSS
+- React-Scroll
+- Stripe
+- Node JS
+
+<h2>Acquired Experience</h2>
+
+Pude aprender ainda mais sobre gerenciamento de estado, usando o useContext. Tive uma grande desafio para integrar o Stripe com a aplicação, pois é algo que envolve conhecimentos mais que básico de back-end, na criação de servidor, rotas e configuração do Stripe API, então pude aprender um pouco mais sobre back-end e configurações. Foi também a primeira vez que fiz deploy de um servidor on-line, com isso, entendi mais sobre variáveis de ambiente e sua importância na hora de configurar o deploy.
+
+<h2>Exibition</h2>
+
+
+<h2>Demo</h2>
+
+[[https://profjanilton.com.br/](https://delicias-da-casa.netlify.app/)](https://delicias-da-casa.netlify.app/)
