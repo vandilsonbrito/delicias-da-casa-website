@@ -1,6 +1,3 @@
-/* import { FaCreditCard } from "react-icons/fa6"; */
-import { GiMoneyStack } from "react-icons/gi";
-import { Link } from "react-router-dom";
 import { useGlobal } from '../../components/GlobalProvider/GlobalProvider';
 import './styles.css'
 import PayButton from "../../components/PayCardButton/PayCardButton";
@@ -35,7 +32,7 @@ function CartCheckout() {
     
     const settingCartQuantityFromLocalStorage = () => {
         checkoutBill.forEach(item => {
-            console.log(item)
+         
             const productsItem = products.find(product => product.id === item.id);
             if(productsItem && productsItem.quantity > 0) {
                 item.quantity = productsItem.quantity;
@@ -98,8 +95,7 @@ function CartCheckout() {
         settingQuantity()
     }, [])
 
-    console.log(products)
-    console.log(checkoutBill)
+    
     // INTEGRATION WITH LOCAL  STORAGE
     const saveCartInLocalStorage = () => {  
         return localStorage.setItem("cart", JSON.stringify(checkoutBill))
@@ -131,34 +127,43 @@ function CartCheckout() {
             <div className="w-full h-full min-h-screen flex flex-col items-center pt-10 lg:pt-20 pb-16 lg:px-20">
                 <h1 className="text-3xl">Checkout</h1>
             
-                <table className="w-[90%] lg:w-[60%] text-white my-10 ">
-                    <thead>
-                        <tr className="bg-slate-700">
-                            <th>Produto</th>
-                            <th>Preço Unitário</th>
-                            <th>Quantidade</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                <tbody>
-                        {createProductCheckout()}
-                        <tr>
-                            <th className="bg-white border-white"></th>
-                            <th className="bg-white"></th>
-                            <th className="bg-slate-700">Total</th>
-                            <th className="bg-slate-700">R$ {total.toFixed(2)}</th>
-                        </tr>
-                </tbody>
-                </table>
+                    {
+                        checkoutBill.length === 0 ? 
+                        (<div className='flex flex-col items-center justify-center w-full h-screen'>
+                            <p className="md:text-lg lg:text-2xl">Você não escolheu nenhum produto.</p>
+                        </div>)
+                        :
+                        (<table className="w-[90%] lg:w-[60%] text-white my-10 ">
+                            <thead>
+                                <tr className="bg-slate-700">
+                                    <th>Produto</th>
+                                    <th>Preço Unitário</th>
+                                    <th>Quantidade</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {createProductCheckout()}
+                                <tr>
+                                    <th className="bg-white border-white"></th>
+                                    <th className="bg-white"></th>
+                                    <th className="bg-slate-700">Total</th>
+                                    <th className="bg-slate-700">R$ {total.toFixed(2)}</th>
+                                </tr>
+                            </tbody>
+                        </table>)
+                    }
+                
 
                 <div className='w-full h-full bg-white flex justify-center items-center lg:mt-5'>
                     <div className="flex flex-col lg:flex-row items-start gap-8 text-white">
                         <PayButton cartItems={checkoutBill}/>
-                        <Link className="w-80 h-fit px-6 py-3 rounded-xl bg-green-600 text-2xl flex justify-center items-center gap-5">
+                        {/* <Link className="w-80 h-fit px-6 py-3 rounded-xl bg-green-600 text-2xl flex justify-center items-center gap-5">
                             Pagar com Dinheiro <GiMoneyStack className="text-3xl"/>
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
+
             </div>
         </>
     )
