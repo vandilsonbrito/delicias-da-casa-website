@@ -1,6 +1,6 @@
 # Delícias da Casa
 
-O website do restaurante e lanchonete Delícias da Casa é destinado ao delivery de pedidos. É possível escolher o(s) produto(s) e pagar com o cartão de débito/crédito através da integração com o Stripe, no qual, é requerido dados do cliente para efetuar a entrega. Ao mesmo tempo, também é possível integrar a aplicação com o Whatsapp e quando o pedido for faturado chegar uma mensagem no Whatsapp do cliente com os detalhes da compra.
+O website do restaurante e lanchonete Delícias da Casa é destinado ao delivery de pedidos. É possível escolher o(s) produto(s) e pagar com o cartão de débito/crédito através da integração com o Stripe, no qual, é requerido dados do cliente para efetuar a entrega. Ao mesmo tempo, também é possível integrar a aplicação com o Whatsapp e quando o pedido for faturado chegar uma mensagem no Whatsapp do cliente com os detalhes da compra (essa função não está ativa no deploy).
 
 <h2>Technologies</h2>
 
