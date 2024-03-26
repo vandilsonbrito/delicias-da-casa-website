@@ -17,6 +17,7 @@ Pude aprender ainda mais sobre gerenciamento de estado, usando o useContext. Tiv
 
 <h2>Exibition</h2>
 
+https://github.com/vandilsonbrito/delicias-da-casa-website/assets/108373095/8ff24d41-12c2-4ce0-9635-df138acb90ab
 
 <h2>Demo</h2>
 
