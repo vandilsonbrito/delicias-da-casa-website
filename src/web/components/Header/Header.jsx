@@ -4,7 +4,7 @@ import logoImg from '../../assets/images/logo-delicias-da-casa.png';
 import PropTypes from 'prop-types';
 
 
-export default function Header({ className, isOrderButtonActive }) {
+export default function Header({ className, isOrderButtonActive, isNavActive }) {
     const scrollToTop = () => {
         scroll.scrollToTop();
     };
@@ -14,17 +14,17 @@ export default function Header({ className, isOrderButtonActive }) {
             <Link to="/">
                 <img className='h-20 md:h-24' src={logoImg} alt="Logo Padaria do Baiano" />
             </Link>
-            <nav className="w-[40%] justify-between text-[1.2rem]  hidden lg:flex">
+            <nav className={`w-[40%] ${isNavActive ? 'justify-between' : 'justify-end'} text-[1.2rem]  hidden lg:flex '}`}>
                 <Link to="/">
                     <button>Home</button>
                 </Link>
-                <Link to='about' onClick={() =>  scrollToTop()} >
+                <Link to='about' onClick={() =>  scrollToTop()} className={`${isNavActive ? 'visible' : 'hidden'}`}>
                     <button>Sobre Nós</button>
                 </Link>
-                <ScrollLink to='/menu' href='/menu' smooth={true} duration={500} offset={130}>
+                <ScrollLink to='/menu' href='/menu' smooth={true} duration={500} offset={130} className={`${isNavActive ? 'visible' : 'hidden'}`}>
                     <button>Cardápio</button>
                 </ScrollLink>
-                <ScrollLink to='/contact' href='/footer' smooth={true} duration={500}>
+                <ScrollLink to='/contact' href='/footer' smooth={true} duration={500} className={`${isNavActive ? 'visible' : 'hidden'}`}>
                     <button>Contato</button>
                 </ScrollLink>
             </nav>
@@ -39,4 +39,5 @@ export default function Header({ className, isOrderButtonActive }) {
 Header.propTypes = {
     className: PropTypes.string,
     isOrderButtonActive: PropTypes.bool,
+    isNavActive: PropTypes.bool
 }
