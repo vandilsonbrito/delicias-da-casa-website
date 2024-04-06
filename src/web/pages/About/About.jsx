@@ -5,7 +5,7 @@ export default function About() {
     
   return (
     <>
-        <Header isOrderButtonActive={false}/>
+        <Header isNavActive={false}/>
         <div className="w-full h-full px-8 py-7 md:px-16 md:py-14 lg:px-28 flex flex-col gap-4 text-lg" style={{minHeight: "calc(100vh - 200px"}}>
             <h3 className="font-semibold text-center mb-5 lg:text-2xl">Bem-vindo ao Delícias da Casa: O Refúgio dos Sabores</h3>
             <p>No coração da cidade, onde os aromas se misturam e as histórias se encontram, está a <strong>Lanchonete e Restaurante Delícias da Casa</strong>. Desde a sua concepção, nossa missão tem sido simples: criar um espaço onde cada mordida seja uma experiência memorável, onde a comida não seja apenas uma refeição, mas uma jornada de deleite para o paladar e para a alma.</p>
