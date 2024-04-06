@@ -4,11 +4,16 @@ import PayButton from "../../components/PayCardButton/PayCardButton";
 import Header from "../../components/Header/Header";
 import products from '../../products.json';
 import { useEffect } from "react";
+import { MdOutlineDeliveryDining } from "react-icons/md";
+import { IoShieldCheckmarkOutline } from "react-icons/io5";
+import { FaRegCircleCheck } from "react-icons/fa6";
+
+
 
 
 function CartCheckout() {
 
-    const { numberOfMistoQuente, numberOfXTudo, numberOfSandMortadela, numberOfXSalada, numberOfBauru, numberOfSandPernil, numberOfAmericano, numberOfFrangoQueijo, numberOfXBacon, numberOfXCatupiry, numberOfSandAtum, numberOfSandSalame, numberOfMarmitex, setNumberOfMistoQuente, setNumberOfXTudo, setNumberOfSandMortadela, setNumberOfXSalada, setNumberOfBauru, setNumberOfSandPernil, setNumberOfAmericano, setNumberOfFrangoQueijo, setNumberOfXBacon, setNumberOfXCatupiry, setNumberOfSandAtum, setNumberOfSandSalame, setNumberOfMarmitex } = useGlobal();
+    const { numberOfMistoQuente, numberOfXTudo, numberOfSandMortadela, numberOfXSalada, numberOfBauru, numberOfSandPernil, numberOfAmericano, numberOfFrangoQueijo, numberOfXBacon, numberOfXCatupiry, numberOfSandAtum, numberOfSandSalame, numberOfMarmitex, setNumberOfMistoQuente, setNumberOfXTudo, setNumberOfSandMortadela, setNumberOfXSalada, setNumberOfBauru, setNumberOfSandPernil, setNumberOfAmericano, setNumberOfFrangoQueijo, setNumberOfXBacon, setNumberOfXCatupiry, setNumberOfSandAtum, setNumberOfSandSalame, setNumberOfMarmitex, setisNavActive } = useGlobal();
 
     const cart = [numberOfMistoQuente, numberOfXTudo, numberOfSandMortadela, numberOfXSalada, numberOfBauru, numberOfSandPernil, numberOfAmericano, numberOfFrangoQueijo, numberOfXBacon, numberOfXCatupiry, numberOfSandAtum, numberOfSandSalame, numberOfMarmitex];
 
@@ -39,10 +44,7 @@ function CartCheckout() {
             }
         });
     }
-    useEffect(() => {
-        settingCartQuantityFromLocalStorage()
-    }, [checkoutBill])
-    
+    settingCartQuantityFromLocalStorage()
 
     const AddItemCart = () => {
             billIndex.forEach(index => {
@@ -91,10 +93,7 @@ function CartCheckout() {
             }
         })
     }
-    useEffect(() => {
-        settingQuantity()
-    }, [])
-
+    settingQuantity();
     
     // INTEGRATION WITH LOCAL  STORAGE
     const saveCartInLocalStorage = () => {  
@@ -123,7 +122,7 @@ function CartCheckout() {
 
     return (
         <>
-            <Header className={'w-full h-24'} isOrderButtonActive={false}></Header>
+            <Header className={'w-full h-24'} setisNavActive={false} ></Header>
             <div className="w-full h-full min-h-screen flex flex-col items-center pt-10 lg:pt-20 pb-16 lg:px-20">
                 <h1 className="text-3xl">Checkout</h1>
             
@@ -163,10 +162,25 @@ function CartCheckout() {
                         </Link> */}
                     </div>
                 </div>
+                <div className="w-fit h-full flex items-center gap-3 md:gap-8 mt-8 p-5 rounded-lg text-sm">
+                    <div className="w-full h-full flex gap-2 items-center justify-center">
+                        <FaRegCircleCheck className='md:text-lg' />
+                        <p className='md:text-lg'>Qualidade</p>
+                    </div>
+                    <div className="w-full h-full flex gap-2 items-center justify-center">
+                        <MdOutlineDeliveryDining className='text-base md:text-xl' />
+                        <p className='md:text-lg'>Delivery</p>
+                    </div>
+                    <div className="w-full h-full flex gap-2 items-center justify-center ">
+                        <IoShieldCheckmarkOutline className='text-base md:text-xl' />
+                        <p className='w-full whitespace-nowrap  md:text-lg'>Pagamento Seguro</p>
+                    </div>
+                    
+                </div>
 
             </div>
         </>
     )
 }
 
-export default CartCheckout
+export default CartCheckout;
