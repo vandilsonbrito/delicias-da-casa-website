@@ -7,7 +7,6 @@ const PayButton = ({ cartItems }) => {
     const BASE_URL = 'https://lonely-red-wasp.cyclic.app'; /* 'https://lonely-red-wasp.cyclic.app'; *//*  http://localhost:3000 */
     
     const handleCheckout = () => {
-        console.log(cartItems)
         axios
         .post(`${BASE_URL}/cart-checkout/stripe/create-checkout-session`, {
             cartItems,

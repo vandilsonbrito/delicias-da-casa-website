@@ -8,7 +8,6 @@ import products from '../../products.json';
 
 export default function CheckoutSuccess() {
 
-  console.log(products)
   
   const [data, setData] = useState([]);
   
@@ -39,7 +38,7 @@ export default function CheckoutSuccess() {
       const completedMessage = `*Pronto, já recebemos seu pedido! Agora é só aguardar que estamos preparando e logo chegará até você.*\n\n Pedido: \n ${createOrderDescription(data)} \n\n *Subtotal*: R$${(data?.amount_subtotal / 100).toFixed(2)} \n *Entrega*: R$${(data?.total_details?.amount_shipping / 100).toFixed(2)} \n *Total*: R$${(data?.amount_total / 100).toFixed(2)} \n\n Nome: ${data?.customer_details?.name} \n Telefone: ${data?.customer_details?.phone} \n\n *Endereço de Entrega*:\n ${data?.customer_details?.address?.line1}, ${data?.customer_details?.address?.line2}, ${data?.customer_details?.address?.city}-${data?.customer_details?.address?.state}. \n\n Entrega estimada em 1 hora. \n\n *Delícias da Casa agradece a preferência!*`;
       let phone = data?.customer_details?.phone;
       phone = phone?.substring(1);
-      console.log(completedMessage, phone)
+    
 
 
       const sendingMessageToWpp = async(message, phone) => {
@@ -61,14 +60,14 @@ export default function CheckoutSuccess() {
       
           const data = await response.json()
       
-          console.log(data)
+   
           // { msg: 'Messages sent' }
       }
       if(data) {
           sendingMessageToWpp(completedMessage, phone)
       }
 
-      console.log(data)
+  
   }, [data]) */  
 
   const createOrderDescription = (data) => {
