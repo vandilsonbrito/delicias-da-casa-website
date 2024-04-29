@@ -3,9 +3,12 @@ table th, td{
 }
 
 tbody tr:nth-child(odd) {
-	background-color:#aaaaaa;
+	background-color:#f6faf3;
 }
 tbody tr:nth-child(even) {
-    background-color:#858585;
+    background-color:#fff;
+}
+tbody {
+    color: black;
 }
 
