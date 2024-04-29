@@ -1,15 +1,138 @@
 [
-  { "id": 1, "productName": "Misto Quente", "price": 5.99, "quantity": 0, "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/misto-quente_pjamnc.jpg" },
-  { "id": 2, "productName": "X-Tudo", "price": 23.99, "quantity": 0, "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/x-tudo_ys6tjp.png" },
-  { "id": 3, "productName": "Sanduíche de Mortadela", "price": 17.99, "quantity": 0, "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/sanduiche-de-mortadela_mt5sy4.webp" },
-  { "id": 4, "productName": "X-Salada", "price": 17.99, "quantity": 0, "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/x-salada_qp8fkb.jpg" },
-  { "id": 5, "productName": "Bauru", "price": 22.50, "quantity": 0, "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982956/Del%C3%ADcias-da-casa/bauru_nm2ce7.jpg" },
-  { "id": 6, "productName": "Sanduíche de Pernil", "price": 21.99, "quantity": 0, "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982956/Del%C3%ADcias-da-casa/sanduiche-de-pernil_a8acll.png" },
-  { "id": 7, "productName": "Americano", "price": 20.99, "quantity": 0, "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/americano_bt0p52.jpg" },
-  { "id": 8, "productName": "Frango c/ Qeijo", "price": 18.99, "quantity": 0, "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982956/Del%C3%ADcias-da-casa/sanduiche-frango_lo9p9k.jpg" },
-  { "id": 9, "productName": "X Bacon", "price": 19.99, "quantity": 0, "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982956/Del%C3%ADcias-da-casa/x-bacon_bpkbbw.jpg" },
-  { "id": 10, "productName": "X Catupiry", "price": 20.99, "quantity": 0, "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982954/Del%C3%ADcias-da-casa/x-catupiry_uytuqc.jpg" },
-  { "id": 11, "productName": "Sanduíche de Atum", "price": 24.99, "quantity": 0, "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/sanduiche-atum_gn0a7g.jpg" },
-  { "id": 12, "productName": "Sanduíche de Salame", "price": 20.00, "quantity": 0, "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982956/Del%C3%ADcias-da-casa/sanduiche-salame_lffey6.webp" },
-  { "id": 13, "productName": "Marmitex", "price": 15.00, "quantity": 0, "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1709982955/Del%C3%ADcias-da-casa/marmitex_trwhcv.webp" }
+  { 
+    "id": 1, 
+    "productName": "Burger Cupim", 
+    "price": 25.99, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139889/hamburger-blend-cupim_l5uf5g.webp",
+    "description": "Pão, Hamburger de Cupim, Salada e Quejio Prato"
+  },
+  { 
+    "id": 2, 
+    "productName": "X-Tudo", 
+    "price": 23.99, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139919/x-tudo_bxx2jo.webp",
+    "description": "Pão de Batata, Hamburger Blend Bovino, Ovo, Queijo Prato e Salada"
+  },
+  { 
+    "id": 3, 
+    "productName": "Burger Bacon e Mirtilo", 
+    "price": 26.99, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139895/mirtilo-churrasco-bacon-hamburguer_zojhov.webp",
+    "description": "Pão Francês, Hamburger Blend Bovino, Mirtilo e Bacon"
+  },
+  { 
+    "id": 4, 
+    "productName": "Sanduiche Peito de Peru", 
+    "price": 18.99, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139906/sanduiche-peito-peru_vczg8q.webp",
+    "description": "Pão, Presunto Peito de Peru e Salada"
+  },
+  { 
+    "id": 5, 
+    "productName": "Misto Quente", 
+    "price": 8.50, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139909/sanduiche-queijo_nje14o.webp",
+    "description": "Pão e Queijo Mussarela"
+  },
+  { 
+    "id": 6, 
+    "productName": "Sanduíche de Pernil", 
+    "price": 21.99, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139903/sanduiche-de-pernil_zxzb1q.webp",
+    "description": "Pão Francês, Pernil com Vegetai"
+  },
+  { 
+    "id": 7, 
+    "productName": "Burger 3 Alcátra", 
+    "price": 32.99, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139876/burger-3-alcatra_txi4qc.webp",
+    "description": "Pão, Hamburger de Alcátra, Queijos Mussarela e Prato, Cebola Caramelizada e Picles" 
+  },
+  { 
+    "id": 8, 
+    "productName": "Burger Blend Bovino", 
+    "price": 23.99, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139887/duplo-blend-bovino_fen5cl.webp",
+    "description": "Pão Australiano, Hamburger Blend Bovino, Queijo Prato, Salada e Maionese Caseira" 
+  },
+  { 
+    "id": 9, 
+    "productName": "Burger Frango", 
+    "price": 19.99, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139884/burguer-chicken_dnzkyc.webp",
+    "description": "Pão de Batata, Hamburger de Frango e Salada" 
+  },
+  { 
+    "id": 10,
+    "productName": "Sanduiche Atum", 
+    "price": 21.99, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139900/sanduiche-atum_ngomkb.webp",
+    "description": "Pão de Forma, Atum Recheado e Alface" 
+  },
+  { 
+    "id": 11,
+    "productName": "Burger Batata", 
+    "price": 24.99, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139898/pao-batata-gergelim_dxpbji.webp",
+    "description": "Pão de Batata e Gergelim, Hamburger Blend Bovino, Batatinha, Cebola e Queijo" 
+  },
+  { 
+    "id": 12,
+    "productName": "Sand. Queijo e Presunto", 
+    "price": 14.70, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139912/sanduiche-queijo-presunto_qkxsox.webp",
+    "description": "Pão de Forma, Presunto, Queijo e Salada" 
+  },
+  { 
+    "id": 13,
+    "productName": "Sanduiche Salame", 
+    "price": 18.60, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139916/sanduiche-salame_crq9qp.webp",
+    "description": "Pão Francês, Salame, Queijo Prato e Alface" 
+  },
+  { 
+    "id": 14,
+    "productName": "Burger Coxão Duro", 
+    "price": 27.89, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139881/burger-coxao-duro_r47uc3.webp",
+    "description": "Pão de Batata e Gergelim, Hamburger Blend Bovino, Queijo e Salada" 
+  },
+  { 
+    "id": 15,
+    "productName": "Bauru", 
+    "price": 25.99, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139874/bauru_ueen0w.webp",
+    "description": "Pão Francês, Rosbife, Queijo Mussarela e Salada" 
+  },
+  { 
+    "id": 16,
+    "productName": "Burger Peito Bovino", 
+    "price": 26.70, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139879/burger-blend-peito-bovino_h3gimv.webp",
+    "description": "Pão, Hamburger de Peito, Queijo Prato e Salada" 
+  },
+  { 
+    "id": 17,
+    "productName": "Kebab", 
+    "price": 17.99, 
+    "quantity": 0, 
+    "image": "https://res.cloudinary.com/ds7cszkkx/image/upload/v1714139892/kebab_uejh8c.webp",
+    "description": "Wrap e Carne Recheada Com Salada" 
+  }
 ]

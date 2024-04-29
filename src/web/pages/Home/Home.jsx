@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer";
 export default function Home() {
   return (
     <>
-      <Header className={'w-full h-24 fixed z-50'} isOrderButtonActive={true} isNavActive={true}/>
+      <Header className={'w-full h-[85px] fixed z-50 bg-white'} isOrderButtonActive={true} isNavActive={true}/>
       <Banner/>
       <Menu/>
       <Footer/>
