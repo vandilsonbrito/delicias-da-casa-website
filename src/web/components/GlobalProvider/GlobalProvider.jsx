@@ -4,24 +4,23 @@ import PropTypes from 'prop-types';
 const GlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
-    const [numberOfMistoQuente, setNumberOfMistoQuente] = useState(0);
-    const [numberOfXTudo, setNumberOfXTudo] = useState(0);
-    const [numberOfSandMortadela, setNumberOfSandMortadela] = useState(0);
-    const [numberOfXSalada, setNumberOfXSalada] = useState(0);
-    const [numberOfBauru, setNumberOfBauru] = useState(0);
-    const [numberOfSandPernil, setNumberOfSandPernil] = useState(0);
-    const [numberOfAmericano, setNumberOfAmericano] = useState(0);
-    const [numberOfFrangoQueijo, setNumberOfFrangoQueijo] = useState(0);
-    const [numberOfXBacon, setNumberOfXBacon] = useState(0);
-    const [numberOfXCatupiry, setNumberOfXCatupiry] = useState(0);
-    const [numberOfSandAtum, setNumberOfSandAtum] = useState(0);
-    const [numberOfSandSalame, setNumberOfSandSalame] = useState(0);
-    const [numberOfMarmitex, setNumberOfMarmitex] = useState(0);
+    const [quantities, setQuantities] = useState({});
+    const handleIncrement = (id, qtd) => {
+        setQuantities({ ...quantities, [id]: (quantities[id] || 0) + qtd})
+    }
+    const handleDecrement = (id) => {
+        if(quantities[id] > 0) {
+            setQuantities({ ...quantities, [id]: quantities[id] - 1})
+        }
+    }
+
     const [isOrderButtonActive, setisOrderButtonActive ] = useState(false);
+    const [isPayButtonClicked, setIsPayButtonClicked ] = useState(false);
     const [isNavActive, setisNavActive ] = useState(true);
+    const [thereIsOrder, setThereIsOrder] = useState(false);
 
     return (
-        <GlobalContext.Provider value={{ numberOfMistoQuente, setNumberOfMistoQuente, numberOfXTudo, setNumberOfXTudo, numberOfSandMortadela, setNumberOfSandMortadela, numberOfXSalada, setNumberOfXSalada, numberOfBauru, setNumberOfBauru, numberOfSandPernil, setNumberOfSandPernil, numberOfAmericano, setNumberOfAmericano, numberOfFrangoQueijo, setNumberOfFrangoQueijo, numberOfXBacon, setNumberOfXBacon, numberOfXCatupiry, setNumberOfXCatupiry, numberOfSandAtum, setNumberOfSandAtum, numberOfSandSalame, setNumberOfSandSalame, numberOfMarmitex, setNumberOfMarmitex, isOrderButtonActive, setisOrderButtonActive, isNavActive, setisNavActive }}>
+        <GlobalContext.Provider value={{ quantities, handleIncrement, setQuantities, handleDecrement, isOrderButtonActive, setisOrderButtonActive, isPayButtonClicked, setIsPayButtonClicked, isNavActive, setisNavActive, thereIsOrder, setThereIsOrder}}>
             {children}
         </GlobalContext.Provider>
     );
