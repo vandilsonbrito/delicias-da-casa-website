@@ -1,366 +1,99 @@
-import mistoQuenteImg from '../../assets/images/misto-quente.jpeg';
-import xTudoImg from '../../assets/images/x-tudo.png';
-import sanduicheMortadelaImg from '../../assets/images/sanduiche-de-mortadela.webp';
-import xSaladaImg from '../../assets/images/x-salada.jpg';
-import BauruImg from '../../assets/images/bauru.jpg';
-import sanduichePernilImg from '../../assets/images/sanduiche-de-pernil.png';
-import americanoImg from '../../assets/images/americano.jpg';
-import sanduicheFrangoImg from '../../assets/images/sanduiche-frango.jpeg';
-import xBaconImg from '../../assets/images/x-bacon.jpg';
-import xCatupiryImg from '../../assets/images/x-catupiry.jpg';
-import sanduicheAtumImg from '../../assets/images/sanduiche-atum.jpg';
-import sanduicheSalameImg from '../../assets/images/sanduiche-salame.webp';
-import marmitexImg from '../../assets/images/marmitex.webp';
 import { RiCloseCircleFill } from "react-icons/ri";
 import { useGlobal } from '../GlobalProvider/GlobalProvider';
 import { MdOutlineWatchLater, MdDeliveryDining  } from "react-icons/md";
-import { useEffect } from 'react';
+import products from '../../products.json';
+import { useEffect, useState } from "react";
 
 
 export default function Menu() {
 
-    const { numberOfMistoQuente, setNumberOfMistoQuente, numberOfXTudo, setNumberOfXTudo, numberOfSandMortadela, setNumberOfSandMortadela, numberOfXSalada, setNumberOfXSalada, numberOfBauru, setNumberOfBauru, numberOfSandPernil, setNumberOfSandPernil, numberOfAmericano, setNumberOfAmericano, numberOfFrangoQueijo, setNumberOfFrangoQueijo, numberOfXBacon, setNumberOfXBacon, numberOfXCatupiry, setNumberOfXCatupiry, numberOfSandAtum, setNumberOfSandAtum, numberOfSandSalame, setNumberOfSandSalame, numberOfMarmitex, setNumberOfMarmitex } = useGlobal();
-
-    const settingQuantity = () => {
-        const checkoutBill = JSON.parse(localStorage.getItem("cart")) || [];
-        !checkoutBill ? [] :
-            checkoutBill.map((item) => {
-                const id = item.id;
-
-                switch(id) {
-                    case 1: setNumberOfMistoQuente(item.quantity); break;
-                    case 2: setNumberOfXTudo(item.quantity); break;
-                    case 3: setNumberOfSandMortadela(item.quantity); break;
-                    case 4: setNumberOfXSalada(item.quantity); break;
-                    case 5: setNumberOfBauru(item.quantity); break;
-                    case 6: setNumberOfSandPernil(item.quantity); break;
-                    case 7: setNumberOfAmericano(item.quantity); break;
-                    case 8: setNumberOfFrangoQueijo(item.quantity); break;
-                    case 9: setNumberOfXBacon(item.quantity); break;
-                    case 10: setNumberOfXCatupiry(item.quantity); break;
-                    case 11: setNumberOfSandAtum(item.quantity); break;
-                    case 12: setNumberOfSandSalame(item.quantity); break;
-                    case 13: setNumberOfMarmitex(item.quantity); break;
-                }
-            })
-    }
+    const { quantities, handleIncrement, handleDecrement, setThereIsOrder } = useGlobal();
+    const [checkoutBill, setCheckoutBill] = useState([]);
+    
     useEffect(() => {
-        settingQuantity()
-    }, [])
+        // Import cart from session storage and then set it to empty
+        const ImportCartFromSessionStorage = () => {
+            const cartFromStorage = JSON.parse(sessionStorage.getItem("cart"));
+            return cartFromStorage || [];
+        }
+        let cartStorage = ImportCartFromSessionStorage();
 
-  return (
-    <div className="w-full h-full pt-5 lg:px-28 bg-white border-t-[1px] border-slate-200" id='/menu'>
+        const valores = Object.values(quantities);
+        const existePedido = valores.some(value => value > 0);
+        setThereIsOrder(existePedido);
 
-        <div className="w-full h-40 mt-3 mb-16 px-10 pb-10 text-center border-b-[1px] border-black">
-            <div className="w-full h-full text-4xl flex items-center justify-evenly gap-5">
-                <div className="w-fit h-full flex flex-col justify-center items-center gap-3">
-                    <MdOutlineWatchLater />
-                    <p className="text-xs lg:text-lg">Aberto das 06:00 hs - 21:00 hs</p>
-                </div>
-                <div className="w-full lg:w-[45%] h-full flex flex-col justify-center items-center gap-3 mt-3 lg:mt-6">
-                    <MdDeliveryDining />
-                    <p className="text-xs lg:text-lg">Delivery acima de R$ 10,00 e a partir das 11:00 hs. Taxa de entrega: R$5,00.</p>
-                </div>
-            </div>
-        </div>
+        products.forEach((item) => {
+            console.log(item);
+            item.quantity = quantities[item.id] || 0;
+        })
+        let selectedItems = products.filter(item => item.quantity > 0);
+        
+        setCheckoutBill(selectedItems)
+        console.log("------------SelectedItems-----------------", selectedItems)
+       /*  selectedItems = []; */
 
-        <h2 className="text-[2.5rem] text-center uppercase">Cardápio</h2>
-        <h3 className="text-[2rem] text-left mt-16 mb-10 ml-12">Lanches</h3>
+        console.log("-----CartSorage------", cartStorage)
+        console.log("-----Quantities------", quantities)
+        
+        
+    }, [quantities]);
 
-        <div className="w-full h-full flex flex-wrap justify-center gap-2">
+    /* console.log("CHECKOUTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", checkoutBill) */
 
-            <div className="container-dish">
-                <button  onClick={() => {setNumberOfMistoQuente(numberOfMistoQuente + 1)}}>
-                    <img className='w-[220px] h-[170px] rounded-3xl select-none' src={mistoQuenteImg} alt="" />
-                </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Misto Quente - R$ 5,00</p>
-                <div className="w-[90%] mt-2 flex items-center justify-center">
-                    <p className="text-sm text-center">Pão, Presunto e Queijo</p>
-                </div>
-                <div className="absolute">
-                    <div className="relative right-[100px]">
-                        <div className="menu-quantity">{numberOfMistoQuente}</div>
+    useEffect(() => {
+        sessionStorage.setItem("cart", JSON.stringify(checkoutBill));
+        console.log("--------------Segundo Useffect - CHECKOUT------------", checkoutBill)
+        
+    }, [checkoutBill, quantities])
+
+    return (
+        <section className="w-full h-full py-5 md:pb-10 lg:pb-20 md:px-10 lg:px-16 bg-white border-t-[1px] border-slate-200" id='/menu'>
+
+            <section className="w-full h-40 mt-3 mb-14 px-10 pb-10 text-center border-b-[1px] border-black">
+                <div className="w-full h-full text-4xl flex items-center justify-evenly gap-5">
+                    <div className="w-fit h-full flex flex-col justify-center items-center gap-3">
+                        <MdOutlineWatchLater />
+                        <p className="text-xs lg:text-lg">Aberto das 06:00 hs - 21:00 hs</p>
                     </div>
-                    <div className="relative -top-[32px] -right-[112px] flex flex-col">
-                        <button 
-                        className="btn-cardapio mt-1"
-                        onClick={() => setNumberOfMistoQuente(numberOfMistoQuente === 0 ? 0 : (numberOfMistoQuente - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-blue-900'/>
+                    <div className="w-full lg:w-[45%] h-full flex flex-col justify-center items-center gap-3 mt-3 lg:mt-6">
+                        <MdDeliveryDining />
+                        <p className="text-xs lg:text-lg">Delivery acima de R$ 10,00 e a partir das 11:00 hs. Taxa de entrega: R$5,00.</p>
+                    </div>
+                </div>
+            </section>
+
+            <h2 className="text-[2.5rem] text-center uppercase">Cardápio</h2>
+            <h3 className="text-[2rem] text-left my-10 ml-12">Lanches</h3>
+
+            <section className="w-full h-full flex flex-wrap justify-center gap-2 md:gap-6">
+    
+                { products.map((item, index) => (
+                    <div className="w-[240px] h-[310px] md:w-[260px] md:h-[350px] flex flex-col justify-center items-center gap-1 rounded-xl relative shadow-xl px-3" key={index}>
+                        <button  onClick={() => handleIncrement(item.id, 1)} className="mt-5">
+                            <img className='max-h-[120px] max-w-[200px] xl:max-h-[140px] xl:max-w-[220px] aspect-auto h-[170px] rounded-3xl select-none active:translate-y-[1px]' src={item.image} alt="" />
                         </button>
-                    </div>
-                </div>
-            </div>
-            <div className="container-dish">
-                <button onClick={() => {setNumberOfXTudo(numberOfXTudo + 1)}}>
-                    <img className='w-[220px] h-[170px] rounded-3xl select-none' src={xTudoImg} alt="" />
-                </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">X-Tudo- R$ 23,99</p>
-                <div className="w-[90%] mt-2 flex items-center justify-center">
-                    <p className="text-sm text-center">Pão, Hambúrguer, Ovo, Queijo, Bacon, Alface e Tomate</p>
-                </div>
-                <div className="absolute">
-                    <div className="relative right-[105px]">
-                        <div className="menu-quantity">{numberOfXTudo}</div>
-                    </div>
-                    <div className="relative -top-[32px] -right-[112px] flex flex-col">
-                        <button 
-                        className="btn-cardapio mt-1"
-                        onClick={() => setNumberOfXTudo(numberOfXTudo === 0 ? 0 : (numberOfXTudo - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-blue-900'/>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-            <div className="container-dish">
-                <button onClick={() => {setNumberOfSandMortadela(numberOfSandMortadela + 1)}}>
-                    <img className='w-[220px] h-[170px] rounded-3xl select-none' src={sanduicheMortadelaImg} alt="" />
-                </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Sanduíche de Mortadela - R$ 17,99</p>
-                <div className="w-[90%] mt-2 flex items-center justify-center">
-                    <p className="text-sm text-center">Pão, Mortadela, Alface e Manteiga</p>
-                </div>
-                <div className="absolute">
-                    <div className="relative right-[105px]">
-                        <div className="menu-quantity">{numberOfSandMortadela}</div>
-                    </div>
-                    <div className="relative -top-[32px] -right-[112px] flex flex-col ">
-                        <button 
-                        className="btn-cardapio mt-1"
-                        onClick={() => setNumberOfSandMortadela(numberOfSandMortadela === 0 ? 0 : (numberOfSandMortadela - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-blue-900'/>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-            <div className="container-dish">
-                <button onClick={() => {setNumberOfXSalada(numberOfXSalada + 1)}}>
-                    <img className='w-[220px] h-[170px] rounded-3xl select-none' src={xSaladaImg} alt="" />
-                </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">X-Salada - R$ 17,99</p>
-                <div className="w-[90%] mt-2 flex items-center justify-center">
-                    <p className="text-sm text-center">Pão, Hambúrguer, Queijo, Alface, Tomate</p>
-                </div>
-                <div className="absolute">
-                    <div className="relative right-[105px]">
-                        <div className="menu-quantity">{numberOfXSalada}</div>
-                    </div>
-                    <div className="relative -top-[32px] -right-[112px] flex flex-col">
-                        <button 
-                        className="btn-cardapio mt-1"
-                        onClick={() => setNumberOfXSalada(numberOfXSalada === 0 ? 0 : (numberOfXSalada - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-blue-900'/>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-            <div className="container-dish">
-                <button onClick={() => {setNumberOfBauru(numberOfBauru + 1)}}>
-                    <img className='w-[220px] h-[170px] rounded-3xl select-none' src={BauruImg} alt="" />
-                </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Bauru - R$ 22,50</p>
-                <div className="w-[90%] mt-2 flex items-center justify-center">
-                    <p className="text-sm text-center">Pão, Rosbife, Queijo, Tomate, Picles</p>
-                </div>
-                <div className="absolute">
-                    <div className="relative right-[105px]">
-                        <div className="menu-quantity">{numberOfBauru}</div>
-                    </div>
-                    <div className="relative -top-[32px] -right-[112px] flex flex-col">
-                        <button 
-                        className="btn-cardapio mt-1"
-                        onClick={() => setNumberOfBauru(numberOfBauru === 0 ? 0 : (numberOfBauru - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-blue-900'/>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-            <div className="container-dish">
-                <button onClick={() => {setNumberOfSandPernil(numberOfSandPernil + 1)}}>
-                    <img className='w-[220px] h-[170px] rounded-3xl select-none' src={sanduichePernilImg} alt="" />
-                </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Sanduíche de Pernil - R$ 21,99</p>
-                <div className="w-[90%] mt-2 flex items-center justify-center">
-                    <p className="text-sm text-center">Pão, Pernil, Tomate</p>
-                </div>
-                <div className="absolute">
-                    <div className="relative right-[105px]">
-                        <div className="menu-quantity">{numberOfSandPernil}</div>
-                    </div>
-                    <div className="relative -top-[32px] -right-[112px] flex flex-col">
-                        <button 
-                        className="btn-cardapio mt-1"
-                        onClick={() => setNumberOfSandPernil(numberOfSandPernil === 0 ? 0 : (numberOfSandPernil - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-blue-900'/>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-            <div className="container-dish">
-                <button onClick={() => {setNumberOfAmericano(numberOfAmericano + 1)}}>
-                    <img className='w-[220px] h-[170px] rounded-3xl select-none' src={americanoImg} alt="" />
-                </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Americano - R$ 20,99</p>
-                <div className="w-[90%] mt-2 flex items-center justify-center">
-                    <p className="text-sm text-center"> Pão, Presunto, Mussarela, Ovo, Alface, Tomate e Maionese</p>
-                </div>
-                <div className="absolute">
-                    <div className="relative right-[105px]">
-                        <div className="menu-quantity">{numberOfAmericano}</div>
-                    </div>
-                    <div className="relative -top-[32px] -right-[112px] flex flex-col">
-                        <button 
-                        className="btn-cardapio mt-1"
-                        onClick={() => setNumberOfAmericano(numberOfAmericano === 0 ? 0 : (numberOfAmericano - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-blue-900'/>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-            <div className="container-dish">
-                <button onClick={() => {setNumberOfFrangoQueijo(numberOfFrangoQueijo + 1)}}>
-                    <img className='w-[220px] h-[170px] rounded-3xl select-none' src={sanduicheFrangoImg} alt="" />
-                </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Frango c/ Qeijo - R$ 18,99</p>
-                <div className="w-[90%] mt-2 flex items-center justify-center">
-                    <p className="text-sm text-center">Pão, Presunto e Queijo</p>
-                </div>
-                <div className="absolute">
-                    <div className="relative right-[105px]">
-                        <div className="menu-quantity">{numberOfFrangoQueijo}</div>
-                    </div>
-                    <div className="relative -top-[32px] -right-[112px] flex flex-col">
-                        <button 
-                        className="btn-cardapio mt-1"
-                        onClick={() => setNumberOfFrangoQueijo(numberOfFrangoQueijo === 0 ? 0 : (numberOfFrangoQueijo - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-blue-900'/>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-            <div className="container-dish">
-                <button onClick={() => {setNumberOfXBacon(numberOfXBacon + 1)}}>
-                    <img className='w-[220px] h-[170px] rounded-3xl select-none' src={xBaconImg} alt="" />
-                </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">X Bacon- R$ 19,99</p>
-                <div className="w-[90%] mt-2 flex items-center justify-center">
-                    <p className="text-sm text-center">Pão, Hambúrguer, Mussarela, Bacon e Maionese Caseira</p>
-                </div>
-                <div className="absolute">
-                    <div className="relative right-[105px]">
-                        <div className="menu-quantity">{numberOfXBacon}</div>
-                    </div>
-                    <div className="relative -top-[32px] -right-[112px] flex flex-col">
-                        <button 
-                        className="btn-cardapio mt-1"
-                        onClick={() => setNumberOfXBacon(numberOfXBacon === 0 ? 0 : (numberOfXBacon - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-blue-900'/>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-            <div className="container-dish">
-                <button onClick={() => {setNumberOfXCatupiry(numberOfXCatupiry + 1)}}>
-                    <img className='w-[220px] h-[170px] rounded-3xl select-none' src={xCatupiryImg} alt="" />
-                </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">X Catupiry - R$ 20,99</p>
-                <div className="w-[90%] mt-2 flex items-center justify-center">
-                    <p className="text-sm text-center">Pão, Hambúrguer, Requeijão, Alface, Tomate e Maionese</p>
-                </div>
-                <div className="absolute">
-                    <div className="relative right-[105px]">
-                        <div className="menu-quantity">{numberOfXCatupiry}</div>
-                    </div>
-                    <div className="relative -top-[32px] -right-[112px] flex flex-col">
-                        <button 
-                        className="btn-cardapio mt-1"
-                        onClick={() => setNumberOfXCatupiry(numberOfXCatupiry === 0 ? 0 : (numberOfXCatupiry - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-blue-900'/>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-            <div className="container-dish">
-                <button onClick={() => {setNumberOfSandAtum(numberOfSandAtum + 1)}}>
-                    <img className='w-[220px] h-[170px] rounded-3xl select-none' src={sanduicheAtumImg} alt="" />
-                </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Sanduíche de Atum - R$ 24,99</p>
-                <div className="w-[90%] mt-2 flex items-center justify-center">
-                    <p className="text-sm text-center">Pão, Atum Ralado, Ervilha, Maionese e Alface</p>
-                </div>
-                <div className="absolute">
-                    <div className="relative right-[105px]">
-                        <div className="menu-quantity">{numberOfSandAtum}</div>
-                    </div>
-                    <div className="relative -top-[32px] -right-[112px] flex flex-col">
-                        <button 
-                        className="btn-cardapio mt-1"
-                        onClick={() => setNumberOfSandAtum(numberOfSandAtum === 0 ? 0 : (numberOfSandAtum - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-blue-900'/>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-            <div className="container-dish">
-                <button onClick={() => {setNumberOfSandSalame(numberOfSandSalame + 1)}}>
-                    <img className='w-[220px] h-[170px] rounded-3xl select-none' src={sanduicheSalameImg} alt="" />
-                </button>
-                <p className="font-bold text-xl text-center mt-2 tracking-wider">Sanduíche de Salame - R$ 20,00</p>
-                <div className="w-[90%] mt-2 flex items-center justify-center">
-                    <p className="text-sm text-center">Pão, Salame, Mussarela, Alface e Maionese </p>
-                </div>
-                <div className="absolute">
-                    <div className="relative right-[105px]">
-                        <div className="menu-quantity">{numberOfSandSalame}</div>
-                    </div>
-                    <div className="relative -top-[32px] -right-[112px] flex flex-col">
-                        <button 
-                        className="btn-cardapio mt-1"
-                        onClick={() => setNumberOfSandSalame(numberOfSandSalame === 0 ? 0 : (numberOfSandSalame - 1))}>
-                            <RiCloseCircleFill  className='text-[1.7rem] text-blue-900'/>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div className="w-full h-full pb-20"> 
-            <h3 className="text-[2rem] text-left mt-16 mb-10 ml-12">Pratos</h3>
-            
-            <div className="w-full h-full flex flex-wrap justify-center gap-2">
-                <div className="container-dish ">
-                    <button onClick={() => setNumberOfMarmitex(numberOfMarmitex + 1)}>
-                        <img className='w-[220px] h-[170px] rounded-3xl' src={marmitexImg} alt="" />
-                    </button>
-                    <p className="font-bold text-xl text-center mt-2 tracking-wider">Marmitex - R$ 15,00</p>
-                    <div className="w-[90%] mt-2 flex items-center justify-center">
-                        <p className="text-sm text-center">Feijão, Arroz, Carne e Salada</p>
-                    </div>
-                </div>
-                <div className="absolute">
-                        <div className="relative top-[36px] right-[105px]">
-                            <div className="menu-quantity">{numberOfMarmitex}</div>
+                        <p className="font-bold text-xl text-center mt-2 tracking-wider">{item.productName}</p>
+                        <p>{`R$ ${(item.price).toFixed(2)}`}</p>
+                        <div className="w-[90%] mt-2 flex items-center justify-center">
+                            <p className="text-sm text-center">{item.description}</p>
                         </div>
-                        <div className="relative top-[5px] -right-[110px] flex flex-col">
-                            <button 
-                            className="btn-cardapio mt-1"
-                            onClick={() => setNumberOfMarmitex(numberOfMarmitex === 0 ? 0 : (numberOfMarmitex - 1))}>
-                                <RiCloseCircleFill  className='text-[1.7rem]'/>
-                            </button>
+                        <div className="">
+                            <div className="absolute top-4 right-[218px] md:right-60">
+                                <div className="menu-quantity">{quantities[item.id] || 0}</div>
+                            </div>
+                            <div className="absolute top-[14px] left-[214px] md:left-60 flex flex-col">
+                                <button 
+                                className="w-fit bg-white rounded-full cursor-pointer active:scale-x-[.96] text-blue-950"
+                                onClick={() => handleDecrement(item.id, 1)}>
+                                    <RiCloseCircleFill  className='text-[1.8rem]'/>
+                                </button>
+                            </div>
                         </div>
                     </div>
-            </div>
-        </div>
-    </div>
-  )
+                )) }
+                
+            </section>
+
+        </section>
+    )
 }
