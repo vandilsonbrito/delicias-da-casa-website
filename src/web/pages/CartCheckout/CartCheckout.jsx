@@ -1,168 +1,117 @@
-import { useGlobal } from '../../components/GlobalProvider/GlobalProvider';
-import './styles.css'
-import PayButton from "../../components/PayCardButton/PayCardButton";
-import Header from "../../components/Header/Header";
-import products from '../../products.json';
-import { useEffect } from "react";
 import { MdOutlineDeliveryDining } from "react-icons/md";
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
 import { FaRegCircleCheck } from "react-icons/fa6";
-
-
+import { useGlobal } from '../../components/GlobalProvider/GlobalProvider';
+import './CartCheckout.css';
+import PayButton from "../../components/PayCardButton/PayCardButton";
+import Header from "../../components/Header/Header";
+import products from '../../products.json';
+import { useEffect, useState } from "react";
 
 
 function CartCheckout() {
 
-    const { numberOfMistoQuente, numberOfXTudo, numberOfSandMortadela, numberOfXSalada, numberOfBauru, numberOfSandPernil, numberOfAmericano, numberOfFrangoQueijo, numberOfXBacon, numberOfXCatupiry, numberOfSandAtum, numberOfSandSalame, numberOfMarmitex, setNumberOfMistoQuente, setNumberOfXTudo, setNumberOfSandMortadela, setNumberOfXSalada, setNumberOfBauru, setNumberOfSandPernil, setNumberOfAmericano, setNumberOfFrangoQueijo, setNumberOfXBacon, setNumberOfXCatupiry, setNumberOfSandAtum, setNumberOfSandSalame, setNumberOfMarmitex, setisNavActive } = useGlobal();
+    const { quantities, setQuantities, isPayButtonClicked } = useGlobal();
+    const [total, setTotal] = useState(0);
+    const [checkoutBill, setCheckoutBill] = useState([]);
+    const [funcDisplayCheckout, setFunctionDisplayCheckout] = useState();
 
-    const cart = [numberOfMistoQuente, numberOfXTudo, numberOfSandMortadela, numberOfXSalada, numberOfBauru, numberOfSandPernil, numberOfAmericano, numberOfFrangoQueijo, numberOfXBacon, numberOfXCatupiry, numberOfSandAtum, numberOfSandSalame, numberOfMarmitex];
+    useEffect(() => {
+        window.scrollTo(0, 0);
 
-    products.forEach((item, index) => {
-        item.quantity = cart[index];
-    })
-    let showProductCheckout = [];
-    let total = 0; 
+        if(Object.keys(quantities).length === 0 || (quantities)) {
+            const cartFromStorage = JSON.parse(sessionStorage.getItem("cart"));
+            const updatedQuantities = {};
+            cartFromStorage.forEach((item) => { updatedQuantities[item.id] = item.quantity });
+            
+            setQuantities(updatedQuantities);    
+        }
+    }, [])
 
-    // START TO CALCULATE THE AMOUNT --------------------------------------------------------------------------
-    let billIndex = cart.map((item, index) => { if(item > 0) return index });
-    billIndex = billIndex.filter(function( element ) {
-        return element !== undefined;
-     });
 
-    // INTEGRATION WITH LOCAL  STORAGE
-    const ImportCartFromLocalStorage = () =>{
-        return JSON.parse(localStorage.getItem("cart"));
-    }
-    let checkoutBill = ImportCartFromLocalStorage() || [];
-    
-    const settingCartQuantityFromLocalStorage = () => {
-        checkoutBill.forEach(item => {
-         
-            const productsItem = products.find(product => product.id === item.id);
-            if(productsItem && productsItem.quantity > 0) {
-                item.quantity = productsItem.quantity;
-            }
-        });
-    }
-    settingCartQuantityFromLocalStorage()
+    useEffect(() => {
+        // INTEGRATION WITH SESSION STORAGE
+        const ImportCartFromSessionStorage = () => {
+            const cartFromStorage = JSON.parse(sessionStorage.getItem("cart"));
+            return cartFromStorage || [];
+        };
+        let cartStorage = ImportCartFromSessionStorage();
+        if(cartStorage.length > 0) {
+            products.map((item, index) => item.quantity = cartStorage[index]?.quantity || 0)
+        }
+        
+        
+        const selectedItems = products.filter(item => item.quantity > 0);
+        
+        /* console.log("cartStorage", cartStorage)
+        console.log("222222222222222222222222222222222222222", quantities)
+        console.log("Products------------", products) */
 
-    const AddItemCart = () => {
-            billIndex.forEach(index => {
-                if (index !== undefined) {
-                    const itemToAdd = products[index];
-                    const existingItem = checkoutBill.find(item => item.productName === itemToAdd.productName);
-                    if (!existingItem) {
-                        checkoutBill.push(itemToAdd);
-                    } 
-                    else if (itemToAdd.quantity > 0){
-                        existingItem.quantity = itemToAdd.quantity;       
-                    }
-                }  
+        const createProductCheckout = () => {
+            let totalValue = 0;
+            const checkoutItems = selectedItems.map((item, index) => {
+                if (item.quantity === 0) return null;
+                const subtotal = item.price * item.quantity;
+                totalValue += subtotal;
+                return (
+                    <tr className="text-center border-b-[1px] border-white" key={index}>
+                        <td>{item.productName}</td>
+                        <td>{`R$ ${item.price.toFixed(2)}`}</td>
+                        <td>{item.quantity}</td>
+                        <td>{`R$ ${subtotal.toFixed(2)}`}</td>
+                    </tr>
+                );
             });
-        return checkoutBill;
-    }
-    AddItemCart()
-
-    const removeItemCart = () => {  
-        const filteredproducts = products.filter((item) => item.quantity > 0);
-        filteredproducts.length !== 0 ? checkoutBill = filteredproducts : null
-
-        return checkoutBill;
-    };
-    removeItemCart()
-    
-    // Setting the quantity of items in the cart to be displayed on home page
-    const settingQuantity = () => {
-        checkoutBill.map((item) => {
-            const id = item.id;
-
-            switch(id) {
-                case 1: setNumberOfMistoQuente(item.quantity); break;
-                case 2: setNumberOfXTudo(item.quantity); break;
-                case 3: setNumberOfSandMortadela(item.quantity); break;
-                case 4: setNumberOfXSalada(item.quantity); break;
-                case 5: setNumberOfBauru(item.quantity); break;
-                case 6: setNumberOfSandPernil(item.quantity); break;
-                case 7: setNumberOfAmericano(item.quantity); break;
-                case 8: setNumberOfFrangoQueijo(item.quantity); break;
-                case 9: setNumberOfXBacon(item.quantity); break;
-                case 10: setNumberOfXCatupiry(item.quantity); break;
-                case 11: setNumberOfSandAtum(item.quantity); break;
-                case 12: setNumberOfSandSalame(item.quantity); break;
-                case 13: setNumberOfMarmitex(item.quantity); break;
-            }
-        })
-    }
-    settingQuantity();
-    
-    // INTEGRATION WITH LOCAL  STORAGE
-    const saveCartInLocalStorage = () => {  
-        return localStorage.setItem("cart", JSON.stringify(checkoutBill))
-    }
-    saveCartInLocalStorage(checkoutBill)
+            setTotal(totalValue);
+            return checkoutItems;
+        };
+        setFunctionDisplayCheckout(createProductCheckout);
+        setCheckoutBill(selectedItems);
+    }, [quantities])
 
 
-    const createProductCheckout = () => {
-        checkoutBill.map((item, index) => {
-            item.quantity === 0 ? null :
-            showProductCheckout.push(
-                <tr className="text-center border-b-[1px] border-white" key={index}>
-                    <td>{item.productName}</td>
-                    <td>{`R$ ${item.price.toFixed(2)}`}</td>
-                    <td>{item.quantity}</td>
-                    <td>{`R$ ${(item.price * item.quantity).toFixed(2)}`}</td>
-                </tr>
-            );
-            total += (item.price * item.quantity)
-        })
-
-        return showProductCheckout
-    }
-
-
+   
     return (
         <>
-            <Header className={'w-full h-24'} setisNavActive={false} ></Header>
-            <div className="w-full h-full min-h-screen flex flex-col items-center pt-10 lg:pt-20 pb-16 lg:px-20">
-                <h1 className="text-3xl">Checkout</h1>
-            
+            <Header className={'w-full fixed z-50 bg-primary'} setisNavActive={true} ></Header>
+            <div className="w-full h-full min-h-screen flex flex-col items-center pt-[120px] lg:pt-28 pb-16 lg:px-20">
+                <h1 className="text-3xl font-semibold">Carrinho</h1>
                     {
                         checkoutBill.length === 0 ? 
-                        (<div className='flex flex-col items-center justify-center w-full h-screen'>
-                            <p className="md:text-lg lg:text-2xl">Você não escolheu nenhum produto.</p>
+                        (<div className='flex flex-col items-center justify-center w-full h-[400px]'>
+                            <p className="md:text-lg lg:text-2xl">Nenhum produto selecionado.</p>
                         </div>)
                         :
-                        (<table className="w-[90%] lg:w-[60%] text-white my-10 ">
-                            <thead>
-                                <tr className="bg-slate-700">
+                        (<table className="w-[80%] lg:w-[60%] xl:w-[750px] text-white my-10 ">
+                            <thead className="border-[2px] border-[#e5e9e2]">
+                                <tr className="bg-slate-600">
                                     <th>Produto</th>
                                     <th>Preço Unitário</th>
                                     <th>Quantidade</th>
                                     <th>Total</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {createProductCheckout()}
-                                <tr>
+                            <tbody className="border-[2px] border-[#e5e9e2]">
+                                {funcDisplayCheckout}
+                            </tbody>
+                            <tfoot>
+                                <tr className="text-white">
                                     <th className="bg-white border-white"></th>
                                     <th className="bg-white"></th>
                                     <th className="bg-slate-700">Total</th>
-                                    <th className="bg-slate-700">R$ {total.toFixed(2)}</th>
+                                    <th className="bg-slate-700">{`R$ ${total.toFixed(2)}`}</th>
                                 </tr>
-                            </tbody>
+                            </tfoot>
                         </table>)
                     }
                 
 
-                <div className='w-full h-full bg-white flex justify-center items-center lg:mt-5'>
-                    <div className="flex flex-col lg:flex-row items-start gap-8 text-white">
+                <div className='w-full h-full flex justify-center items-center lg:mt-5'>
+                    <div className={`${checkoutBill.length === 0 ? 'hidden': 'flex'} flex-col lg:flex-row items-start gap-8 text-white`} >
                         <PayButton cartItems={checkoutBill}/>
-                        {/* <Link className="w-80 h-fit px-6 py-3 rounded-xl bg-green-600 text-2xl flex justify-center items-center gap-5">
-                            Pagar com Dinheiro <GiMoneyStack className="text-3xl"/>
-                        </Link> */}
                     </div>
                 </div>
-                <div className="w-fit h-full flex items-center gap-3 md:gap-8 mt-8 p-5 rounded-lg text-sm">
+                <div className="w-fit h-full flex items-center gap-3 md:gap-8 mt-8 p-5 rounded-lg text-xs md:text-sm">
                     <div className="w-full h-full flex gap-2 items-center justify-center">
                         <FaRegCircleCheck className='md:text-lg' />
                         <p className='md:text-lg'>Qualidade</p>
@@ -177,7 +126,9 @@ function CartCheckout() {
                     </div>
                     
                 </div>
-
+                <div className={`${isPayButtonClicked ? 'loader-wrapper' : ''}`}>
+                    <span className={`${isPayButtonClicked ? 'loader' : ''}`}></span>
+                </div>
             </div>
         </>
     )
