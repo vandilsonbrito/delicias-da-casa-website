@@ -21,4 +21,4 @@ https://github.com/vandilsonbrito/delicias-da-casa-website/assets/108373095/8ff2
 
 <h2>Demo</h2>
 
-[[delicias-da-casa](https://delicias-da-casa.netlify.app/)]
+[delicias-da-casa](https://delicias-da-casa.vercel.app/)
