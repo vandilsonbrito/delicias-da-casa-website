@@ -34,9 +34,9 @@ export default function Header({ className, isOrderButtonActive, isNavActive }) 
 
   return (
     <div className={className}>
-        <header className="w-full md:h-[80px] flex justify-between items-center py-3 md:py-5 px-5 md:px-20 text-black">
+        <header className="w-full md:h-[85px] flex justify-between items-center py-4 md:py-5 px-5 md:px-20 text-black">
             <Link to="/">
-                <img className='h-16 md:h-[80px]' src={logoImg} alt="Logo Padaria do Baiano" />
+                <img className='h-16 md:h-[80px]' src={logoImg} alt="Logo Delíccias da Casa" />
             </Link>
             <nav className={`w-[40%] ${isNavActive ? 'justify-between' : 'justify-end'} text-[1.2rem]  flex '}`}>
                 <Link to="/" className={`${isOrderButtonActive ? 'hidden' : 'visible'}`}>   

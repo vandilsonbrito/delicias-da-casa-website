@@ -10,7 +10,7 @@ export default function Footer() {
             </div>
             <div className="w-fit h-full">
                 <p className="text-center md:mb-3 lg:mb-4">Localização</p>
-                <p className='text-sm text-center md:text-base'>Rua Senador Antônio Fernandes, n&#8304;70, Ibiassucê - BA</p>
+                <p className='text-sm text-center md:text-base'>Rua 123, n&#8304;0, Bahia, Brasil</p>
             </div>
             <div className="w-fit h-full flex flex-col items-center">
                 <p className="text-center md:mb-3 lg:mb-3 ">Contato</p>

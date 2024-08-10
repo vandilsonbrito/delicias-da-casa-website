@@ -11,38 +11,27 @@ export default function Menu() {
     const [checkoutBill, setCheckoutBill] = useState([]);
     
     useEffect(() => {
-        // Import cart from session storage and then set it to empty
-        const ImportCartFromSessionStorage = () => {
-            const cartFromStorage = JSON.parse(sessionStorage.getItem("cart"));
-            return cartFromStorage || [];
-        }
-        let cartStorage = ImportCartFromSessionStorage();
 
         const valores = Object.values(quantities);
         const existePedido = valores.some(value => value > 0);
         setThereIsOrder(existePedido);
 
         products.forEach((item) => {
-            console.log(item);
             item.quantity = quantities[item.id] || 0;
         })
         let selectedItems = products.filter(item => item.quantity > 0);
         
         setCheckoutBill(selectedItems)
-        console.log("------------SelectedItems-----------------", selectedItems)
+        /* console.log("------------SelectedItems-----------------", selectedItems) */
        /*  selectedItems = []; */
-
-        console.log("-----CartSorage------", cartStorage)
-        console.log("-----Quantities------", quantities)
         
         
     }, [quantities]);
 
-    /* console.log("CHECKOUTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT", checkoutBill) */
 
     useEffect(() => {
         sessionStorage.setItem("cart", JSON.stringify(checkoutBill));
-        console.log("--------------Segundo Useffect - CHECKOUT------------", checkoutBill)
+        /* console.log("--------------Segundo Useffect - CHECKOUT------------", checkoutBill) */
         
     }, [checkoutBill, quantities])
 
