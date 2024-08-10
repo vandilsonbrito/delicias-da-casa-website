@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
   res.send('Server is running!');
 });
 
-// Route to inform server that any request from '/CartCheckout/stripe' route will be processed by the middleware in /stripe.js
+// Route to inform server that any request from '/cart-checkout/stripe' route will be processed by the middleware in /stripe.js
 app.use("/cart-checkout/stripe", stripe);
 
 
@@ -37,11 +37,11 @@ app.post('/create-checkout-session', express.json(), async (req, res) => {
   }
 });
 
-// Route to pass webhook data to frontend
-app.post('/checkout-success', express.json(), stripe);
+// Route to pass webhook data to frontend 
+app.get('/checkout-success', express.json(), stripe);
 
 
-app.listen(port, () => {
+app.listen(import.meta.process.env.PORT || port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
 
