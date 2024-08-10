@@ -28,7 +28,6 @@ function CartCheckout() {
         }
     }, [])
 
-
     useEffect(() => {
         // INTEGRATION WITH SESSION STORAGE
         const ImportCartFromSessionStorage = () => {
@@ -36,17 +35,21 @@ function CartCheckout() {
             return cartFromStorage || [];
         };
         let cartStorage = ImportCartFromSessionStorage();
+
         if(cartStorage.length > 0) {
-            products.map((item, index) => item.quantity = cartStorage[index]?.quantity || 0)
+            cartStorage.forEach((item) => {
+                products.find((product) => { 
+                    if(product.id === item.id) {
+                        product.quantity = item.quantity;
+                    }
+                })
+                return products
+            })
+
         }
-        
-        
+          
         const selectedItems = products.filter(item => item.quantity > 0);
         
-        /* console.log("cartStorage", cartStorage)
-        console.log("222222222222222222222222222222222222222", quantities)
-        console.log("Products------------", products) */
-
         const createProductCheckout = () => {
             let totalValue = 0;
             const checkoutItems = selectedItems.map((item, index) => {
@@ -66,6 +69,7 @@ function CartCheckout() {
             return checkoutItems;
         };
         setFunctionDisplayCheckout(createProductCheckout);
+
         setCheckoutBill(selectedItems);
     }, [quantities])
 
