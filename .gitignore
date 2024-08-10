@@ -26,3 +26,6 @@ _redirects
 
 # Local Netlify folder
 .netlify
+
+.vercel
+vercel.json
