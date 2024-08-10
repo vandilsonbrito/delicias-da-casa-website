@@ -26,21 +26,21 @@ export default function CheckoutSuccess() {
     }, [history]);
 
     useEffect(() => {
-        const BASE_URL = 'https://lonely-red-wasp.cyclic.app'; /* 'https://lonely-red-wasp.cyclic.app'; *//*  http://localhost:3000 */
+        const BASE_URL = 'https://backend-server-stripe.vercel.app'; /* 'https://backend-server-stripe.vercel.app'; *//*  http://localhost:3000 */
         const fecthData = async() => {
             try {
               setLoaded(true);
               let response = await axios.get(`${BASE_URL}/checkout-success`);
               response = await response.data[0];
-              setData(response);
               setLoaded(false);
+              setData(response);
             }
             catch(err) {
               console.log("Error receiving data: ", err)
             }
         }
         fecthData()
-
+    
     }, [])
     // Remove itens from local storage when checkout completed
     sessionStorage.clear();
@@ -94,10 +94,10 @@ export default function CheckoutSuccess() {
 
 
     return (
-      <>
+      <> 
           <Header className={"w-full fixed z-50 bg-primary"}></Header> 
           
-          {data ? 
+          {data ?  
             (<main className="w-full h-full min-h-screen flex flex-col justify-center items-center pt-28 lg:pt-20 pb-14">
                 <div className="checkout-succes text-green-600  rounded-2xl flex flex-col justify-center items-center p-8 gap-2 py-8 text-lg">
                     <FaCheckCircle className="text-4xl"/>

@@ -9,12 +9,10 @@ PayCardButton.propTypes = {
 }
 
 export default function PayCardButton({ cartItems }) {
-    /* console.log("CartITEMS", cartItems) */
-
-
+    
     const { setIsPayButtonClicked } = useGlobal();
 
-    const BASE_URL = 'https://lonely-red-wasp.cyclic.app'; /* 'https://lonely-red-wasp.cyclic.app'; *//*  http://localhost:3000 */
+    const BASE_URL = 'https://backend-server-stripe.vercel.app'; /* 'https://backend-server-stripe.vercel.app'; *//*  http://localhost:3000 */
     
     const handleCheckout = () => {
         setIsPayButtonClicked(true);
